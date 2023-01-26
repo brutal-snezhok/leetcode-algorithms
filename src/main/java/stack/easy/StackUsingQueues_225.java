@@ -3,6 +3,7 @@ package stack.easy;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// https://leetcode.com/problems/implement-stack-using-queues/description/
 public class StackUsingQueues_225 {
     // first solution: two stacks, push: O(1), pop: O(n)
     private Queue<Integer> q1;
