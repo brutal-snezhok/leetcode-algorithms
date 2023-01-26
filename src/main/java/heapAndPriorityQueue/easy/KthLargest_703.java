@@ -1,4 +1,4 @@
-package heap_and_priority_queue.easy;
+package heapAndPriorityQueue.easy;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

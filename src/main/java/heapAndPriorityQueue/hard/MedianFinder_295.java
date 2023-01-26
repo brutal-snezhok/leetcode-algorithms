@@ -1,4 +1,4 @@
-package heap_and_priority_queue.hard;
+package heapAndPriorityQueue.hard;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

@@ -1,4 +1,4 @@
-package heap_and_priority_queue.medium;
+package heapAndPriorityQueue.medium;
 
 import java.util.Comparator;
 import java.util.LinkedList;
