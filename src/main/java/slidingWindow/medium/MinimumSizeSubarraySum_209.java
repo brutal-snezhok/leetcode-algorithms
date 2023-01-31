@@ -1,4 +1,4 @@
-package slidingWindow;
+package slidingWindow.medium;
 
 // https://leetcode.com/problems/minimum-size-subarray-sum/description/
 public class MinimumSizeSubarraySum_209 {
