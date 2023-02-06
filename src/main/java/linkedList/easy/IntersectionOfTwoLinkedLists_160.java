@@ -5,6 +5,7 @@ import linkedList.ListNode;
 // https://leetcode.com/problems/intersection-of-two-linked-lists/
 public class IntersectionOfTwoLinkedLists_160 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        // for listA = [2,6,4] and listB = [1,5] they intersect in null
         // time O(headA + headB)
         // space O(1)
 
