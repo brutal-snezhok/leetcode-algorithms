@@ -1,5 +1,7 @@
 package linkedList.easy;
 
+import linkedList.ListNode;
+
 // https://leetcode.com/problems/merge-two-sorted-lists/description/
 public class MergeTwoSortedLists_21 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
@@ -56,23 +58,6 @@ public class MergeTwoSortedLists_21 {
         } else {
             list2.next = mergeTwoLists(list1, list2.next);
             return list2;
-        }
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
         }
     }
 }
