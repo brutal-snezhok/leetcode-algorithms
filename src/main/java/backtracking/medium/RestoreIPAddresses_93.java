@@ -53,4 +53,35 @@ public class RestoreIPAddresses_93 {
         }
     }
 
+    // third variant with StringBuilder (optimized)
+    public List<String> restoreIpAddresses3(String s) {
+        // we have 3 choses every time and 4 is max height because if dotNumber > 4 , then return.
+        // time O(3^4) = O(1)
+        // space O(3*4) = O(1)
+        // time O(m^n*n), n - number of integers, m - number of dots
+        // space O(m*n)
+
+        List<String> res = new ArrayList<>();
+        backtracking3(s, res, new StringBuilder(), 0, 0);
+
+        return res;
+    }
+    private void backtracking3(String s, List<String> res, StringBuilder curr, int start, int numDots) {
+        if(numDots == 4 && start == s.length()) {
+            res.add(curr.substring(0, curr.length() - 1));
+            return;
+        }
+        if(numDots > 4) return;
+
+        for(int i = start; i < Math.min(start + 3, s.length()); i++) {
+            int num = Integer.parseInt(s.substring(start, i + 1));
+            if(num <= 255 && (i == start || s.charAt(start) != '0')) {
+                int l = curr.length();
+                curr.append(s, start, i + 1).append(".");
+                backtracking3(s, res, curr, i + 1, numDots + 1);
+                curr.setLength(l);
+            }
+        }
+    }
+
 }
