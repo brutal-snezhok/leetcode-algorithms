@@ -6,13 +6,13 @@ import java.util.Queue;
 // https://leetcode.com/problems/kth-largest-element-in-a-stream/
 class KthLargest_703 {
 
-    Queue<Integer> q;
+    Queue<Integer> minHeap;
     int k;
 
     // time O(nlogk)
     // space O(k)
     public KthLargest_703(int k, int[] nums) {
-        q = new PriorityQueue<>(k);
+        minHeap = new PriorityQueue<>(k);
         this.k = k;
 
         for(int num : nums)
@@ -22,17 +22,25 @@ class KthLargest_703 {
     // time O(mlogk), m time call add method
     // space O(k)
     public int add(int val) {
-        if(q.size() < k) {
-            q.add(val);
-            return q.peek();
+        if(minHeap.size() < k) {
+            minHeap.add(val);
+            return minHeap.peek();
         }
 
-        if(q.peek() < val) {
-            q.poll();
-            q.add(val);
+        if(minHeap.peek() < val) {
+            minHeap.poll();
+            minHeap.add(val);
         }
 
-        return q.peek();
+        return minHeap.peek();
+    }
+
+    public int add2(int val) {
+        minHeap.add(val);
+        while(minHeap.size() != k)
+            minHeap.poll();
+
+        return minHeap.peek();
     }
 }
 
