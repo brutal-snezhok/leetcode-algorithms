@@ -2,9 +2,12 @@ package heapAndPriorityQueue.medium;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Random;
 
 // https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 public class KthLargestElementInArray_215 {
+    Random rand = new Random();
+
     public int findKthLargest(int[] nums, int k) {
         // quick select
         // avg time O(n), worst case O(n^2)
@@ -20,6 +23,9 @@ public class KthLargestElementInArray_215 {
     }
 
     private int quickSelect(int[] nums, int k, int l, int r) {
+        int randomInd = rand.nextInt(r - l + 1) + l; // choose pivot ind as random
+        swap(nums, randomInd, r); // and swap it with last value
+
         int pivot = nums[r];
         int p = l;
         for(int i = l; i < r; i++) {
