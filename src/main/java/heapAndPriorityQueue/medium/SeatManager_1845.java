@@ -7,7 +7,7 @@ import java.util.Queue;
 public class SeatManager_1845 {
     Queue<Integer> pq; // min heap, unresoved seats
 
-    // time O(n)
+    // time O(nlogn)
     // space O(n)
     public SeatManager_1845(int n) {
         pq = new PriorityQueue<>();
