@@ -3,6 +3,7 @@ package backtracking.medium;
 import java.util.List;
 
 // https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/
+// solution: https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/solutions/414180/clean-java-javascript-dfs-solution/comments/372762
 public class MaximumLengthOfConcatenatedStringWithUniqueCharacters_1239 {
     int max = 0;
 
