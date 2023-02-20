@@ -17,6 +17,8 @@ public class ReorganizedString_767 {
         // 2. create map: {char, count}
         // 3. create priority queue & add pairs from map with comparator by count
         // 4. go throw queue and create res string
+        //    if prev == curr -> take next pair from q
+        //    else just add curr to res  
 
         // [aaab]
         // map = {a - 3, b - 1}
