@@ -33,4 +33,31 @@ public class BinaryTreeMaximumPathSum_124 {
             this.maxSum = maxSum;
         }
     }
+
+
+
+    // second solution: with global variable
+    int maxPath = Integer.MIN_VALUE;
+
+    public int maxPathSum2(TreeNode root) {
+        // time O(n)
+        // space O(h)
+        dfs2(root);
+
+        return maxPath;
+    }
+
+    private int dfs2(TreeNode node) {
+        if(node == null)
+            return 0;
+
+        int l = dfs2(node.left);
+        int r = dfs2(node.right);
+
+        l = Math.max(0, l);
+        r = Math.max(0, r);
+        maxPath = Math.max(maxPath, node.val + l + r);
+
+        return node.val + Math.max(l, r);
+    }
 }
