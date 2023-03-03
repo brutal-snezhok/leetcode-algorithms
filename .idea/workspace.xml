@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3583-e8b3-4326-bc54-e79e9d078139" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/heap_and_priority_queue/hard/MedianFinder_295.java" afterDir="false" />
+    <list default="true" id="473c3583-e8b3-4326-bc54-e79e9d078139" name="Changes" comment="solved process tasks using servers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,31 +41,87 @@
     <option name="autoscrollFromSource" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.IslandPerimeter_463">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LongestHappyString_1405" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="heap_and_priority_queue.medium.LongestHappyString_1405" />
+    <configuration name="IslandPerimeter_463" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphs.easy.IslandPerimeter_463" />
       <module name="leetcode-algorithms" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="heap_and_priority_queue.medium.*" />
+          <option name="PATTERN" value="graphs.easy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinimumWindowSubstring_76" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="slidingWindow.hard.MinimumWindowSubstring_76" />
+      <module name="leetcode-algorithms" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="slidingWindow.hard.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OperationsOnTree_1993" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tree.medium.OperationsOnTree_1993" />
+      <module name="leetcode-algorithms" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tree.medium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SerializeAndDeserializeBinaryTree_297" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tree.hard.SerializeAndDeserializeBinaryTree_297" />
+      <module name="leetcode-algorithms" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tree.hard.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="backtracking.medium.Test" />
+      <module name="leetcode-algorithms" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backtracking.medium.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -107,7 +162,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LongestHappyString_1405" />
+        <item itemvalue="Application.IslandPerimeter_463" />
+        <item itemvalue="Application.MinimumWindowSubstring_76" />
+        <item itemvalue="Application.OperationsOnTree_1993" />
+        <item itemvalue="Application.SerializeAndDeserializeBinaryTree_297" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -119,54 +178,453 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674541099226</updated>
-      <workItem from="1674541100766" duration="12976000" />
+      <workItem from="1674541100766" duration="14426000" />
+      <workItem from="1674626400206" duration="8559000" />
+      <workItem from="1674711023428" duration="6524000" />
+      <workItem from="1674799964472" duration="12438000" />
+      <workItem from="1674888980299" duration="4013000" />
+      <workItem from="1675057810596" duration="6751000" />
+      <workItem from="1675143082082" duration="2987000" />
+      <workItem from="1675234016564" duration="4354000" />
+      <workItem from="1675316737476" duration="3898000" />
+      <workItem from="1675402731587" duration="2062000" />
+      <workItem from="1675494117614" duration="5154000" />
+      <workItem from="1675581714772" duration="2050000" />
+      <workItem from="1675662540137" duration="8630000" />
+      <workItem from="1675749786189" duration="6820000" />
+      <workItem from="1675836170765" duration="7986000" />
+      <workItem from="1675919083328" duration="7723000" />
+      <workItem from="1676007462368" duration="12508000" />
+      <workItem from="1676099304820" duration="1684000" />
+      <workItem from="1676221749941" duration="1000" />
+      <workItem from="1676267257911" duration="8656000" />
+      <workItem from="1676353406204" duration="5644000" />
+      <workItem from="1676440130000" duration="2876000" />
+      <workItem from="1676465694237" duration="2200000" />
+      <workItem from="1676528570604" duration="1701000" />
+      <workItem from="1676548378229" duration="2286000" />
+      <workItem from="1676611415640" duration="3262000" />
+      <workItem from="1676699747501" duration="4690000" />
+      <workItem from="1676818661375" duration="1381000" />
+      <workItem from="1676877069349" duration="5197000" />
+      <workItem from="1676955692237" duration="5687000" />
+      <workItem from="1677043626134" duration="4850000" />
+      <workItem from="1677131232493" duration="4761000" />
+      <workItem from="1677220021880" duration="8210000" />
+      <workItem from="1677305013899" duration="5454000" />
+      <workItem from="1677390854280" duration="1779000" />
+      <workItem from="1677476264726" duration="14824000" />
+      <workItem from="1677562347042" duration="4304000" />
+      <workItem from="1677650205236" duration="15977000" />
+      <workItem from="1677734334712" duration="4463000" />
+      <workItem from="1677821260098" duration="6398000" />
     </task>
-    <task id="LOCAL-00001" summary="init project">
-      <created>1674542109353</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00098" summary="solved MaximumLengthOfConcatenatedStringWithUniqueCharacters_1239 task">
+      <created>1676629995135</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
       <option name="project" value="LOCAL" />
-      <updated>1674542109353</updated>
+      <updated>1676629995135</updated>
     </task>
-    <task id="LOCAL-00002" summary="solved kth largest task">
-      <created>1674542186038</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+    <task id="LOCAL-00099" summary="solved MaximumLengthOfConcatenatedStringWithUniqueCharacters_1239 task">
+      <created>1676630063167</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
       <option name="project" value="LOCAL" />
-      <updated>1674542186038</updated>
+      <updated>1676630063167</updated>
     </task>
-    <task id="LOCAL-00003" summary="solved task scheduler task">
-      <created>1674547358725</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+    <task id="LOCAL-00100" summary="updated SeatManager_1845 solution">
+      <created>1676630583580</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
       <option name="project" value="LOCAL" />
-      <updated>1674547358725</updated>
+      <updated>1676630583580</updated>
     </task>
-    <task id="LOCAL-00004" summary="solved task scheduler task">
-      <created>1674555082444</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+    <task id="LOCAL-00101" summary="solved SingleThreadedCPU_1834 task">
+      <created>1676878664681</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
       <option name="project" value="LOCAL" />
-      <updated>1674555082444</updated>
+      <updated>1676878664682</updated>
     </task>
-    <task id="LOCAL-00005" summary="solved car pooling task">
-      <created>1674557924114</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+    <task id="LOCAL-00102" summary="added more solutions for CarPooling_1094 task">
+      <created>1676881825180</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
       <option name="project" value="LOCAL" />
-      <updated>1674557924114</updated>
+      <updated>1676881825180</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00103" summary="added one more solution for MedianFinder_295 task">
+      <created>1676886329861</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1676886329861</updated>
+    </task>
+    <task id="LOCAL-00104" summary="solved MaximumPerformanceOfTeam_1383 task">
+      <created>1676895144478</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1676895144478</updated>
+    </task>
+    <task id="LOCAL-00105" summary="solved DesignBrowserHistory_1472 task">
+      <created>1676961872923</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1676961872924</updated>
+    </task>
+    <task id="LOCAL-00106" summary="solved AddTwoNumbers_2 task">
+      <created>1676963457255</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1676963457255</updated>
+    </task>
+    <task id="LOCAL-00107" summary="solved FindTheDuplicateNumber_287 task">
+      <created>1676979906893</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1676979906893</updated>
+    </task>
+    <task id="LOCAL-00108" summary="solved SwapNodesInPairs_24 task">
+      <created>1676981456730</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1676981456730</updated>
+    </task>
+    <task id="LOCAL-00109" summary="solved LRUCache_146 task">
+      <created>1677053112334</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1677053112334</updated>
+    </task>
+    <task id="LOCAL-00110" summary="solved SortList_148 task">
+      <created>1677053681016</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1677053681016</updated>
+    </task>
+    <task id="LOCAL-00111" summary="solved RotateList_61 task">
+      <created>1677056913514</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1677056913514</updated>
+    </task>
+    <task id="LOCAL-00112" summary="solved PartitionList_86 task">
+      <created>1677059665218</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1677059665218</updated>
+    </task>
+    <task id="LOCAL-00113" summary="solved ReverseLinkedListII_92 task">
+      <created>1677133651930</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1677133651931</updated>
+    </task>
+    <task id="LOCAL-00114" summary="solved DesignCircularQueue_622 task">
+      <created>1677137102496</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1677137102496</updated>
+    </task>
+    <task id="LOCAL-00115" summary="solved InsertionSortList_147 task">
+      <created>1677153708707</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1677153708707</updated>
+    </task>
+    <task id="LOCAL-00116" summary="solved MergeKSortedLists_23 task">
+      <created>1677158568237</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1677158568237</updated>
+    </task>
+    <task id="LOCAL-00117" summary="designed maxHeap">
+      <created>1677233590075</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1677233590075</updated>
+    </task>
+    <task id="LOCAL-00118" summary="solved ReverseNodesInKGroup_25 task">
+      <created>1677250238475</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1677250238475</updated>
+    </task>
+    <task id="LOCAL-00119" summary="solved GenerateParentheses_22 task">
+      <created>1677484555516</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1677484555516</updated>
+    </task>
+    <task id="LOCAL-00120" summary="solved ContainsDuplicateII_219 task">
+      <created>1677497698660</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1677497698660</updated>
+    </task>
+    <task id="LOCAL-00121" summary="solved NumberSubArraysOfSizeKAndAverageGreaterThanOrEqualToThreshold_1343 task">
+      <created>1677498372546</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1677498372547</updated>
+    </task>
+    <task id="LOCAL-00122" summary="solved BestTimeToBuyAndSellStock_121 task">
+      <created>1677500023787</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1677500023787</updated>
+    </task>
+    <task id="LOCAL-00123" summary="solved LongestRepeatingCharacterReplacement_424 task">
+      <created>1677504244664</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1677504244664</updated>
+    </task>
+    <task id="LOCAL-00124" summary="solved BinaryTreeInorderTraversal_94 task">
+      <created>1677506475619</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1677506475619</updated>
+    </task>
+    <task id="LOCAL-00125" summary="solved InvertBinaryTree_226 task">
+      <created>1677507785635</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1677507785635</updated>
+    </task>
+    <task id="LOCAL-00126" summary="solved MaximumDepthOfBinaryTree_104 task">
+      <created>1677509159921</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1677509159921</updated>
+    </task>
+    <task id="LOCAL-00127" summary="solved FrequencyOfTheMostFrequentElement_1838 task">
+      <created>1677566101237</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1677566101237</updated>
+    </task>
+    <task id="LOCAL-00128" summary="solved SerializeAndDeserializeBinaryTree_297 task">
+      <created>1677657536294</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1677657536295</updated>
+    </task>
+    <task id="LOCAL-00129" summary="solved BinaryTreeMaximumPathSum_124 task">
+      <created>1677663772063</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1677663772063</updated>
+    </task>
+    <task id="LOCAL-00130" summary="solved BinaryTreeMaximumPathSum_124 task">
+      <created>1677664325857</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1677664325857</updated>
+    </task>
+    <task id="LOCAL-00131" summary="solved ConvertBSTToGreaterTree_538 task">
+      <created>1677669180669</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1677669180669</updated>
+    </task>
+    <task id="LOCAL-00132" summary="solved BinarySearchTreeIterator_173 task">
+      <created>1677669788167</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1677669788167</updated>
+    </task>
+    <task id="LOCAL-00133" summary="solved TrimABinarySearchTree_669 task">
+      <created>1677671470093</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1677671470093</updated>
+    </task>
+    <task id="LOCAL-00134" summary="solved findBottomLeftTreeValue_513 task">
+      <created>1677672147798</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1677672147798</updated>
+    </task>
+    <task id="LOCAL-00135" summary="solved AllPossibleFullBinaryTrees_894 task">
+      <created>1677677164594</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1677677164594</updated>
+    </task>
+    <task id="LOCAL-00136" summary="solved OperationsOnTree_1993 task">
+      <created>1677680254853</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1677680254854</updated>
+    </task>
+    <task id="LOCAL-00137" summary="solved FlipEquivalentBinaryTrees_951 task">
+      <created>1677681708579</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1677681708579</updated>
+    </task>
+    <task id="LOCAL-00138" summary="solved BalancedBinaryTree_110 task">
+      <created>1677682632631</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1677682632631</updated>
+    </task>
+    <task id="LOCAL-00139" summary="solved SameTree_100 task">
+      <created>1677682989336</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1677682989336</updated>
+    </task>
+    <task id="LOCAL-00140" summary="solved SubtreeOfAnotherTree_572 task">
+      <created>1677683706971</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1677683706971</updated>
+    </task>
+    <task id="LOCAL-00141" summary="solved ConvertSortedArrayToBinarySearchTree_108 task">
+      <created>1677684687308</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1677684687308</updated>
+    </task>
+    <task id="LOCAL-00142" summary="solved MergeTwoBinaryTrees_617 task">
+      <created>1677685198156</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1677685198156</updated>
+    </task>
+    <task id="LOCAL-00143" summary="solved PathSum_112 task">
+      <created>1677741956665</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1677741956665</updated>
+    </task>
+    <task id="LOCAL-00144" summary="solved IslandPerimeter_463 task">
+      <created>1677828535993</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1677828536007</updated>
+    </task>
+    <task id="LOCAL-00145" summary="solved NumberOfIslands_200 task">
+      <created>1677841593571</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1677841593571</updated>
+    </task>
+    <task id="LOCAL-00146" summary="solved ConstructStringFromBinaryTree_606 task">
+      <created>1677841774310</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1677841774310</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="init project" />
-    <MESSAGE value="solved kth largest task" />
-    <MESSAGE value="solved task scheduler task" />
-    <MESSAGE value="solved car pooling task" />
-    <option name="LAST_COMMIT_MESSAGE" value="solved car pooling task" />
+    <MESSAGE value="solved NumberSubArraysOfSizeKAndAverageGreaterThanOrEqualToThreshold_1343 task" />
+    <MESSAGE value="solved BestTimeToBuyAndSellStock_121 task" />
+    <MESSAGE value="solved LongestRepeatingCharacterReplacement_424 task" />
+    <MESSAGE value="solved BinaryTreeInorderTraversal_94 task" />
+    <MESSAGE value="solved InvertBinaryTree_226 task" />
+    <MESSAGE value="solved MaximumDepthOfBinaryTree_104 task" />
+    <MESSAGE value="solved FrequencyOfTheMostFrequentElement_1838 task" />
+    <MESSAGE value="solved SerializeAndDeserializeBinaryTree_297 task" />
+    <MESSAGE value="solved BinaryTreeMaximumPathSum_124 task" />
+    <MESSAGE value="solved ConvertBSTToGreaterTree_538 task" />
+    <MESSAGE value="solved BinarySearchTreeIterator_173 task" />
+    <MESSAGE value="solved TrimABinarySearchTree_669 task" />
+    <MESSAGE value="solved findBottomLeftTreeValue_513 task" />
+    <MESSAGE value="solved AllPossibleFullBinaryTrees_894 task" />
+    <MESSAGE value="solved OperationsOnTree_1993 task" />
+    <MESSAGE value="solved FlipEquivalentBinaryTrees_951 task" />
+    <MESSAGE value="solved BalancedBinaryTree_110 task" />
+    <MESSAGE value="solved SameTree_100 task" />
+    <MESSAGE value="solved SubtreeOfAnotherTree_572 task" />
+    <MESSAGE value="solved ConvertSortedArrayToBinarySearchTree_108 task" />
+    <MESSAGE value="solved MergeTwoBinaryTrees_617 task" />
+    <MESSAGE value="solved PathSum_112 task" />
+    <MESSAGE value="solved IslandPerimeter_463 task" />
+    <MESSAGE value="solved NumberOfIslands_200 task" />
+    <MESSAGE value="solved ConstructStringFromBinaryTree_606 task" />
+    <option name="LAST_COMMIT_MESSAGE" value="solved ConstructStringFromBinaryTree_606 task" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/backtracking/medium/CombinationSumII_40.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/backtracking/medium/GenerateParentheses_22.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/graphs/easy/IslandPerimeter_463.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/graphs/easy/IslandPerimeter_463.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="curr" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
