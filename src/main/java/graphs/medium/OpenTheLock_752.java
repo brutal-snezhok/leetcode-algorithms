@@ -1,4 +1,4 @@
-package tree.medium;
+package graphs.medium;
 
 import java.util.*;
 
