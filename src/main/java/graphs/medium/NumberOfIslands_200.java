@@ -4,6 +4,39 @@ import java.util.*;
 
 // https://leetcode.com/problems/number-of-islands/description/
 public class NumberOfIslands_200 {
+
+    int[][] directions = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+
+    // best solution
+    public int numIslands3(char[][] grid) {
+        // dfs
+        // time O(n*m)
+        // space O(n*m)
+
+        int res = 0;
+        final int ROWS = grid.length;
+        final int COLS = grid[0].length;
+        boolean[][] visited = new boolean[ROWS][COLS];
+        for(int r = 0; r < ROWS; r++) {
+            for(int c = 0; c < COLS; c++) {
+                if(grid[r][c] == '1' && !visited[r][c]) {
+                    dfs(r, c, grid, ROWS, COLS, visited);
+                    res++;
+                }
+            }
+        }
+
+        return res;
+    }
+
+    private void dfs(int r, int c, char[][] grid, int ROWS, int COLS, boolean[][] visited) {
+        if(r < 0 || r >= ROWS || c < 0 || c >= COLS || grid[r][c] == '0' || visited[r][c])
+            return;
+
+        visited[r][c] = true;
+        for(int[] dir : directions)
+            dfs(r + dir[0], c + dir[1], grid, ROWS, COLS, visited);
+    }
     public int numIslands(char[][] grid) {
         // time O(m*n)
         // space O(m*n)
