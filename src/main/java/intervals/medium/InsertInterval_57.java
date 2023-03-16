@@ -5,6 +5,7 @@ import java.util.List;
 
 // https://leetcode.com/problems/insert-interval/
 public class InsertInterval_57 {
+    // solution1
     public int[][] insert(int[][] intervals, int[] newInterval) {
         // time O(n), O(logn) - binary search and O(n) inserting into particular position
         // space O(n), O(n) with returned value
@@ -73,5 +74,68 @@ public class InsertInterval_57 {
             res = intervals.length;
 
         return res;
+    }
+
+
+    // solution2
+    public static int[][] insert2(int[][] intervals, int[] newInterval) {
+        // time O(n)
+        // space O(n)
+
+        // insert interval in correct place
+        // then merge this intervals
+        // return output
+
+        if(intervals.length == 0) {
+            int[][] res = new int[1][2];
+            res[0] = newInterval;
+            return res;
+        }
+
+        int[][] updatedIntervals = insertNewInterval2(intervals, newInterval);
+        List<int[]> listIntervals = new ArrayList<>();
+        listIntervals.add(updatedIntervals[0]);
+
+        for(int i = 1; i < updatedIntervals.length; i++) {
+            int[] prev = listIntervals.get(listIntervals.size() - 1);
+            int[] next = updatedIntervals[i];
+
+            if(prev[1] >= next[0])
+                prev[1] = Math.max(prev[1], next[1]);
+            else
+                listIntervals.add(next);
+        }
+
+        int[][] res = new int[listIntervals.size()][2];
+        int i = 0;
+        for(int[] interval : listIntervals)
+            res[i++] = interval;
+
+        return res;
+    }
+
+    private static int[][] insertNewInterval2(int[][] intervals, int[] newInterval) {
+        int[][] res = new int[intervals.length + 1][2];
+
+        int i = 0;
+        boolean isNotInserted = true;
+        for(int[] interval : intervals) {
+            if(isNotInserted && interval[0] >= newInterval[0]) {
+                res[i++] = newInterval;
+                isNotInserted = false;
+            }
+
+            res[i++] = interval;
+        }
+        if(isNotInserted) { // to handle case intervals = [[1, 5]], newInterval = [2, 7]
+            res[i++] = newInterval;
+            isNotInserted = false;
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        insert2(new int[][]{{1, 5}}, new int[]{2, 7});
     }
 }
