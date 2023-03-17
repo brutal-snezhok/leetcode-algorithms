@@ -29,8 +29,33 @@ public class RemoveCoveredIntervals_1288 {
         return res.size();
     }
 
+    public static int removeCoveredIntervals2(int[][] intervals) {
+        // time O(nlogn)
+        // space O(n)
+
+        // sort intervals
+        // save prev interval
+        // on every step compare prev.end vs curr.end
+        // if prev.end >= curr.end res++
+        // if no then prev = curr;
+
+        Arrays.sort(intervals, (arr1, arr2) -> arr1[0] - arr2[0] == 0 ? arr2[1] - arr1[1] : arr1[0] - arr2[0]);
+        int res = 0;
+        int[] prev = intervals[0];
+        for(int i = 1; i < intervals.length; i++) {
+            int[] curr = intervals[i];
+
+            if(prev[1] >= curr[1])
+                res++;
+            else
+                prev = curr;
+        }
+
+        return intervals.length - res;
+    }
+
     public static void main(String[] args) {
-        removeCoveredIntervals(new int[][]{
+        removeCoveredIntervals2(new int[][]{
                 {1,2},
                 {1,4},
                 {3,4}
