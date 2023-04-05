@@ -1,5 +1,8 @@
 package arraysHashing.easy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // https://leetcode.com/problems/robot-return-to-origin/description/
 public class RobotReturnToOrigin_657 {
     public boolean judgeCircle(String moves) {
