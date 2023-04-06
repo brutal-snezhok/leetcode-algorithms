@@ -60,6 +60,7 @@ public class DecryptMessage {
     public static void main(String[] args) {
         System.out.println(encrypt("crime"));
         System.out.println(encrypt("encyclopedia"));
+        System.out.println(encrypt("cat"));
     }
 
     /*
