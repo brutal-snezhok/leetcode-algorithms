@@ -1,4 +1,4 @@
-package arraysHashing.easy;
+package arraysHashing.easy.matrix;
 
 public class ReshapeTheMatrix_566 {
     public static int[][] matrixReshape(int[][] mat, int r, int c) {

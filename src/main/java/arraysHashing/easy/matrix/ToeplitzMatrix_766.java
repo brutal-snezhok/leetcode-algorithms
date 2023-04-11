@@ -1,4 +1,4 @@
-package arraysHashing.easy;
+package arraysHashing.easy.matrix;
 
 // https://leetcode.com/problems/toeplitz-matrix/description/
 public class ToeplitzMatrix_766 {
