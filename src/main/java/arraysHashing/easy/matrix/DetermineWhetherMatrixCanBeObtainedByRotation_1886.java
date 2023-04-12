@@ -49,12 +49,10 @@ public class DetermineWhetherMatrixCanBeObtainedByRotation_1886 {
         int n = mat.length;
 
         for (int r = 0; r < n; r++)
-            for (int c = r; c < n; c++) {
-                if(r != c) {
-                    int temp = mat[r][c];
-                    mat[r][c] = mat[c][r];
-                    mat[c][r] = temp;
-                }
+            for (int c = r + 1; c < n; c++) {
+                int temp = mat[r][c];
+                mat[r][c] = mat[c][r];
+                mat[c][r] = temp;
             }
     }
 
@@ -73,8 +71,8 @@ public class DetermineWhetherMatrixCanBeObtainedByRotation_1886 {
         d.findRotation(new int[][]{
                 {0, 0},
                 {0, 1}
-        }, new int[][] {
-                {0 ,0},
+        }, new int[][]{
+                {0, 0},
                 {1, 0}
         });
     }
