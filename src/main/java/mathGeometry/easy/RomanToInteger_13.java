@@ -5,7 +5,8 @@ import java.util.Map;
 
 // https://leetcode.com/problems/roman-to-integer/description/
 public class RomanToInteger_13 {
-    public int romanToInt(String s) {
+    // solution1
+    public int romanToInt1(String s) {
         // time O(n)
         // space O(1)
 
@@ -26,6 +27,32 @@ public class RomanToInteger_13 {
                 res -= map.get(ch);
             else
                 res += map.get(ch);
+        }
+
+        return res;
+    }
+
+    // solution2
+    Map<Character, Integer> map = Map.of('I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
+
+    public int romanToInt2(String s) {
+        // time O(n)
+        // space O(1)
+
+        // if prevVal < currVal -> res -= 2 * prevVal
+        int res = 0;
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            int val = map.get(ch);
+
+            res += val;
+
+            if(i != 0) {
+                char prev = s.charAt(i - 1);
+                int prevVal = map.get(prev);
+                if(val > prevVal)
+                    res -= 2 * prevVal;
+            }
         }
 
         return res;
