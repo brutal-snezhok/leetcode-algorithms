@@ -33,7 +33,7 @@ public class DeleteAndEarn_740 {
     // solution2
     public int deleteAndEarn2(int[] nums) {
         // dp, memoization, top down, TLE
-        // time O(2^n)
+        // time O(n^2)
         // space O(n)
 
         // create freq arr
