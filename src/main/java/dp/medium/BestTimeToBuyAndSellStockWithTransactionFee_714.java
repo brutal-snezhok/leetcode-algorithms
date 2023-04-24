@@ -8,29 +8,24 @@ import java.util.Map;
 public class BestTimeToBuyAndSellStockWithTransactionFee_714 {
     // solution1
     public int maxProfit1(int[] prices, int fee) {
-        // backtracking, TLE
-        // time O(3^n)
+        // recursive, TLE
+        // time O(2^n)
         // space O(n)
-        return backtracking(0, false, prices, fee);
+
+        return dfs1(prices, fee, 0, true);
     }
 
-    private int backtracking(int pos, boolean bought, int[] prices, int fee) {
-        if (pos == prices.length)
+    private int dfs1(int[] prices, int fee, int i, boolean buy) {
+        if(i >= prices.length)
             return 0;
 
-        int maxProfit = 0;
-
-        if (bought)
-            // sell
-            maxProfit = Math.max(maxProfit, backtracking(pos + 1, false, prices, fee) + prices[pos]);
+        int res = dfs1(prices, fee, i + 1, buy); // do nothing
+        if(buy)
+            res = Math.max(res, dfs1(prices, fee, i + 1, false) - prices[i]);
         else
-            // buy
-            maxProfit = Math.max(maxProfit, backtracking(pos + 1, true, prices, fee) - prices[pos] - fee);
+            res = Math.max(res, dfs1(prices, fee, i + 1, true) + prices[i] - fee);
 
-        // do nothing
-        maxProfit = Math.max(maxProfit, backtracking(pos + 1, bought, prices, fee));
-
-        return maxProfit;
+        return res;
     }
 
     // solution2
@@ -68,6 +63,35 @@ public class BestTimeToBuyAndSellStockWithTransactionFee_714 {
         return maxProfit;
     }
 
+    /*
+     public int maxProfit(int[] prices, int fee) {
+        // dp, top-down
+        // time O(n)
+        // space O(n)
+
+       int[][] dp = new int[prices.length][2];
+       for(int[] row : dp)
+           Arrays.fill(row, -1);
+
+       return dfs(prices, fee, 0, true, dp);
+    }
+
+    private int dfs(int[] prices, int fee, int i, boolean buy, int[][] dp) {
+        if(i >= prices.length)
+            return 0;
+        if(dp[i][buy ? 1 : 0] != -1)
+            return dp[i][buy ? 1 : 0];
+
+        int res = dfs(prices, fee, i + 1, buy, dp); // do nothing
+        if(buy)
+            res = Math.max(res, dfs(prices, fee, i + 1, false, dp) - prices[i]);
+        else
+            res = Math.max(res, dfs(prices, fee, i + 1, true, dp) + prices[i] - fee);
+
+        return dp[i][buy ? 1 : 0] = res;
+    }
+    */
+
     // solution3
     public int maxProfit3(int[] prices, int fee) {
         // bottom up, dp
@@ -100,6 +124,33 @@ public class BestTimeToBuyAndSellStockWithTransactionFee_714 {
 
         return dp[0][1];
     }
+
+    /*
+    public int maxProfit(int[] prices, int fee) {
+        // iterative
+        // time O(n)
+        // space O(n)
+        int dp[][] = new int[prices.length + 1][2];
+
+        for(int day = prices.length; day >= 0; day--) {
+            for(int buy = 0; buy <= 1; buy++) {
+                if(day >= prices.length)
+                    continue;
+
+                int res = dp[day + 1][buy]; // no transactions this day
+
+                if(buy == 1)
+                    res = Math.max(res, dp[day + 1][0] - prices[day]);
+                else
+                    res = Math.max(res, dp[day + 1][1] + prices[day] - fee);
+
+                dp[day][buy] = res;
+            }
+        }
+
+        return dp[0][1];
+    }
+     */
 
     // solution4
     public int maxProfit4(int[] prices, int fee) {
@@ -135,4 +186,31 @@ public class BestTimeToBuyAndSellStockWithTransactionFee_714 {
 
         return dp[0][1];
     }
+
+    /*
+    public int maxProfit(int[] prices, int fee) {
+        // iterative, optimized
+        // time O(n)
+        // space O(1)
+
+        int[][] dp = new int[2][2];
+
+        for(int day = prices.length - 1; day >= 0; day--) {
+            for(int buy = 0; buy <= 1; buy++) {
+                if(day >= prices.length)
+                    continue;
+                int res = dp[(day + 1) % 2][buy]; // no transactions this day
+
+                if(buy == 1)
+                    res = Math.max(res, dp[(day + 1) % 2][0] - prices[day]);
+                else
+                    res = Math.max(res, dp[(day + 1) % 2][1] + prices[day] - fee);
+
+                dp[day % 2][buy] = res;
+            }
+        }
+
+        return dp[0][1];
+    }
+     */
 }
