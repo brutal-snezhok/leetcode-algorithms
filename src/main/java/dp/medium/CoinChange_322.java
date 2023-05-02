@@ -32,6 +32,33 @@ public class CoinChange_322 {
         return minCost == Integer.MAX_VALUE ? -1 : minCost;
     }
 
+    /*
+     public int coinChange(int[] coins, int amount) {
+        // time O(n^amount)
+        // space O(amount)
+
+        return backtracking(coins, amount, 0, 0);
+    }
+
+    private int backtracking(int[] coins, int amount, int sum, int i) {
+        if(sum == amount)
+            return 0;
+        if(i >= coins.length || sum > amount)
+            return -1;
+
+        int maxCount = amount / coins[i];
+        int res = Integer.MAX_VALUE;
+        for(int coinCount = 0; coinCount <= maxCount; coinCount++) {
+            int numOfCoins = backtracking(coins, amount, sum + coins[i] * coinCount, i + 1);
+
+            if(numOfCoins != -1)
+                res = Math.min(res, numOfCoins + coinCount);
+        }
+
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+     */
+
     public int coinChange2(int[] coins, int amount) {
         // bottom up, dp
         // time O(amount * n), n - number of coins
@@ -68,7 +95,8 @@ public class CoinChange_322 {
     }
 
     public static void main(String[] args) {
-        //coinChange(new int[]{1, 2, 5}, 11);
-        coinChange3(new int[]{2}, 3);
+        // coinChange(new int[]{1, 2, 5}, 11);
+        // coinChange3(new int[]{2}, 3);
+        CoinChange_322 change = new CoinChange_322();
     }
 }
