@@ -2,6 +2,9 @@ package linkedList.hard;
 
 import linkedList.ListNode;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 // https://leetcode.com/problems/merge-k-sorted-lists/description/
 public class MergeKSortedLists_23 {
     // solution1
@@ -70,5 +73,34 @@ public class MergeKSortedLists_23 {
         }
 
         return lists[0];
+    }
+
+    // solution3
+    public ListNode mergeKLists3(ListNode[] lists) {
+        // time O(k + nlogk) = O(nlogk), k - number of elements in heap
+        // space O(k)
+
+        // add all root nodes to minHeap
+        // take smallest from heap and add it to the result
+
+        Queue<ListNode> minHeap = new PriorityQueue<>((n1, n2) -> n1.val - n2.val);
+        ListNode dummy = new ListNode();
+        ListNode curr = dummy;
+
+        // add started node to minHeap
+        for(ListNode node : lists)
+            if(node != null)
+                minHeap.add(node);
+
+        while(!minHeap.isEmpty()) {
+            ListNode node = minHeap.poll();
+            curr.next = node;
+            curr = curr.next;
+
+            if(node.next != null)
+                minHeap.add(node.next);
+        }
+
+        return dummy.next;
     }
 }
