@@ -1,6 +1,7 @@
 package dp.medium.zero_one_knapsack;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 // https://leetcode.com/problems/partition-equal-subset-sum/description/
 public class PartitionEqualSubsetSum_416 {
@@ -56,5 +57,33 @@ public class PartitionEqualSubsetSum_416 {
 
         memo[i][sum] = takeVal || doNotTakeVal;
         return memo[i][sum];
+    }
+
+    // solution3
+    int total1;
+    public boolean canPartition3(int[] nums) {
+        // bottom up
+        // time O(s*n)
+        // space O(s*n)
+
+        total1 = Arrays.stream(nums).sum();
+        if(total1 % 2 != 0)
+            return false;
+
+        int n = nums.length;
+        boolean[][] dp = new boolean[nums.length][total1 / 2 + 1];
+        for(int i = 0; i < n; i++)
+            dp[i][0] = true;
+
+        for(int s=1; s < total1 / 2 + 1 ; s++)
+            dp[0][s] = (nums[0] == s ? true : false);
+
+        for(int i = 1; i < n; i++) {
+            for(int s = 1; s < total1 / 2 + 1; s++) {
+                dp[i][s] = dp[i - 1][s] || (s >= nums[i] ? dp[i - 1][s - nums[i]] : false) ;
+            }
+        }
+
+        return dp[n - 1][total1 / 2];
     }
 }

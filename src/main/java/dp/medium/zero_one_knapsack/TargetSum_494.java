@@ -29,37 +29,31 @@ public class TargetSum_494 {
     }
 
     // solution2
+    // comment which describes why should use 2 * total: https://leetcode.com/problems/target-sum/editorial/comments/1263710
+
     int total;
-
-    public int findTargetSumWays2(int[] nums, int target) {
-        // time O(s*n), s - sum of all vals, n - number of elements
-        // space O(s*n)
-
-        // on each index we have two chooses:
-        // 1. take +val
-        // 2. take -val
-        // use memo
+    public int findTargetSumWays(int[] nums, int target) {
+        // time O(n * s)
+        // space O(n * s)
 
         total = Arrays.stream(nums).sum();
-        int[][] memo = new int[nums.length][2 * total + 1];
-        for (int[] row : memo) {
-            Arrays.fill(row, Integer.MIN_VALUE);
-        }
+        int n = nums.length;
+        Integer[][] memo = new Integer[n][2 * total + 1];
 
-        return dfs2(nums, target, 0, 0, memo);
+        return dfs(nums, target, 0, 0, memo);
     }
 
-    private int dfs2(int[] nums, int target, int i, int currSum, int[][] memo) {
+    private int dfs(int[] nums, int target, int i, int currSum, Integer[][] memo) {
         if(i == nums.length && currSum == target)
             return 1;
         if(i == nums.length && currSum != target)
             return 0;
-        if(memo[i][currSum + total] != Integer.MIN_VALUE)
+        if(memo[i][currSum + total] != null)
             return memo[i][currSum + total];
 
-        int plusVal = dfs2(nums, target, i + 1, currSum + nums[i], memo);
-        int minusVal = dfs2(nums, target, i + 1, currSum - nums[i], memo);
-        memo[i][currSum + total] = plusVal + minusVal;
+        int positive = dfs(nums, target, i + 1, currSum + nums[i], memo);
+        int negative = dfs(nums, target, i + 1, currSum - nums[i], memo);
+        memo[i][currSum + total] = positive + negative;
 
         return memo[i][currSum + total];
     }
