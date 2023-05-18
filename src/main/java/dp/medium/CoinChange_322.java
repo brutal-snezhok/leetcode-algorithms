@@ -4,60 +4,69 @@ import java.util.Arrays;
 
 // https://leetcode.com/problems/coin-change/description/
 public class CoinChange_322 {
-    public int coinChange1(int[] coins, int amount) {
-        // backtracking, TLE
-        // time O(amount^n), n - number of coins
-        // space O(n), n - max depth of recursion
-
-        return coinChange1(0, coins, amount);
-    }
-
-    private int coinChange1(int ind, int[] coins, int amount) {
-        if(amount == 0)
-            return 0;
-        if(amount < 0 || ind >= coins.length)
-            return -1;
-
-        int maxVal = amount / coins[ind];
-        int minCost = Integer.MAX_VALUE;
-        for(int c = 0; c <= maxVal; c++) {
-            if(amount < c * coins[ind])
-                break;
-
-            int res = coinChange1(ind + 1, coins, amount - c * coins[ind]);
-            if(res != -1)
-                minCost = Math.min(minCost, res + c);
-        }
-
-        return minCost == Integer.MAX_VALUE ? -1 : minCost;
-    }
-
-    /*
-     public int coinChange(int[] coins, int amount) {
-        // time O(n^amount)
+    // solution1
+    public int coinChange1(int[] coins, int target) {
+        // TLE
+        // time O(2^amount)
         // space O(amount)
 
-        return backtracking(coins, amount, 0, 0);
-    }
+        // can take
+        // can not take
+        // currSum == amount -> return 0
+        // i == coins.length -> return Integer.MAX_VALUE
 
-    private int backtracking(int[] coins, int amount, int sum, int i) {
-        if(sum == amount)
-            return 0;
-        if(i >= coins.length || sum > amount)
-            return -1;
-
-        int maxCount = amount / coins[i];
-        int res = Integer.MAX_VALUE;
-        for(int coinCount = 0; coinCount <= maxCount; coinCount++) {
-            int numOfCoins = backtracking(coins, amount, sum + coins[i] * coinCount, i + 1);
-
-            if(numOfCoins != -1)
-                res = Math.min(res, numOfCoins + coinCount);
-        }
-
+        int res = dfs1(coins, target, 0);
         return res == Integer.MAX_VALUE ? -1 : res;
     }
-     */
+
+    private int dfs1(int[] coins, int target, int i) {
+        if(target == 0)
+            return 0;
+        if(i == coins.length || target < 0)
+            return Integer.MAX_VALUE;
+
+        int take = dfs1(coins, target - coins[i], i);
+        if(take != Integer.MAX_VALUE) // to avoid overflow
+            take += 1;
+
+        int notTake = dfs1(coins, target, i + 1);
+
+        return Math.min(take, notTake);
+    }
+
+    // solution2
+    public int coinChange(int[] coins, int target) {
+        // dp, memo
+        // time O(target * n)
+        // space O(target * n)
+
+        // can take
+        // can not take
+        // target == 0 -> return 0
+        // i == coins.length -> return Integer.MAX_VALUE
+
+        Integer[][] memo = new Integer[coins.length][target + 1];
+        int res = dfs(coins, target, 0, memo);
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+
+    private int dfs(int[] coins, int target, int i, Integer[][] memo) {
+        if(target == 0)
+            return 0;
+        if(i == coins.length || target < 0)
+            return Integer.MAX_VALUE;
+        if(memo[i][target] != null)
+            return memo[i][target];
+
+        int take = dfs(coins, target - coins[i], i, memo);
+        if(take != Integer.MAX_VALUE)
+            take += 1;
+
+        int notTake = dfs(coins, target, i + 1, memo);
+
+        memo[i][target] = Math.min(take, notTake);
+        return memo[i][target];
+    }
 
     public int coinChange2(int[] coins, int amount) {
         // bottom up, dp
@@ -78,7 +87,31 @@ public class CoinChange_322 {
         return dp[amount] > amount ? -1 : dp[amount];
     }
 
-    public static int coinChange3(int[] coins, int amount) {
+    public int coinChange3(int[] coins, int target) {
+        // bottom up, dp
+        // time O(target * n)
+        // space O(target * n)
+
+        int n = coins.length;
+        Integer[][] dp = new Integer[n + 1][target + 1];
+
+        //Initialization
+        for(int i = 1; i < n + 1; i++) dp[i][0] = 0;
+        for(int j = 0; j < target + 1; j++) dp[0][j] = Integer.MAX_VALUE - 1;
+
+        for(int i = 1; i < n + 1; i++) {
+            for(int j = 1; j < target + 1; j++) {
+                if(j >= coins[i - 1])
+                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - coins[i - 1]] + 1);
+                else
+                    dp[i][j] = dp[i - 1][j];
+            }
+        }
+
+        return dp[n][target] == Integer.MAX_VALUE || dp[n][target] == Integer.MAX_VALUE - 1 ? -1 : dp[n][target];
+    }
+
+    public static int coinChange4(int[] coins, int amount) {
         // time O(amount * n)
         // space O(amount)
 
