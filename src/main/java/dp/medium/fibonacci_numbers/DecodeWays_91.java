@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.fibonacci_numbers;
 
 // https://leetcode.com/problems/decode-ways/description/
 public class DecodeWays_91 {
@@ -7,6 +7,10 @@ public class DecodeWays_91 {
     public int numDecodings1(String s) {
         // time O(2^n)
         // space O(n)
+
+        // we have two choices
+        // 1. take one char
+        // 2. take two chars, before you should check if two chars in range [10, 26]
 
         return numDecodings1(0, s);
     }
@@ -17,9 +21,9 @@ public class DecodeWays_91 {
         if(p == n) return 1;
         if(s.charAt(p) == '0') return 0;
 
-        int res = numDecodings1(p + 1, s);
+        int res = numDecodings1(p + 1, s); // take one char
         if(p + 1 < n && (s.charAt(p) == '1' || (s.charAt(p) == '2' && s.charAt(p + 1) < '7')))
-            res += numDecodings1(p + 2, s);
+            res += numDecodings1(p + 2, s); // take two chars
 
         return res;
     }
@@ -83,7 +87,7 @@ public class DecodeWays_91 {
 
     // solution4, dp, shorter version
     public int numDecodings4(String s) {
-        // dp
+        // bottom-up, dp
         // time O(n)
         // space O(n)
 
@@ -106,7 +110,7 @@ public class DecodeWays_91 {
 
     // solution5
     public int numDecodings5(String s) {
-        // dp
+        // bottom-up, optimized space
         // time O(n)
         // space O(1)
 
