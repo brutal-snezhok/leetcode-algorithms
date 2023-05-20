@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.unbounded_knapsack;
 
 import java.util.Arrays;
 
