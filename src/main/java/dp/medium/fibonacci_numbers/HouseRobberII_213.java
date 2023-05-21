@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.fibonacci_numbers;
 
 // https://leetcode.com/problems/house-robber-ii/
 public class HouseRobberII_213 {
