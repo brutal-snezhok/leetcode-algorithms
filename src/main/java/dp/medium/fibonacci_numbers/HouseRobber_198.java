@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.fibonacci_numbers;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -113,6 +113,24 @@ public class HouseRobber_198 {
 
         return dp[n];
     }
+
+    public int rob(int[] nums) {
+        // bottom up, dp
+        // time O(n)
+        // space O(n)
+
+        // dp[i] - max money after robbing i houses
+
+        int n = nums.length;
+        int[] dp = new int[n + 2];
+
+        for(int i = 0; i < nums.length; i++) {
+            dp[i + 2] = Math.max(dp[i + 1], dp[i] + nums[i]);
+        }
+
+        return dp[n + 1];
+    }
+
      */
 
     // solution5
@@ -133,4 +151,26 @@ public class HouseRobber_198 {
 
         return prev;
     }
+
+    /**
+    `    public int rob(int[] nums) {
+     // bottom up, optimized space
+     // time O(n)
+     // space O(1)
+
+     // dp[i] - max money after robbing i houses
+
+     int n = nums.length;
+     int prevPrev = 0;
+     int prev = 0;
+
+     for(int i = 0; i < n; i++) {
+     int temp = Math.max(prev, prevPrev + nums[i]);
+     prevPrev = prev;
+     prev = temp;
+     }
+
+     return prev;
+     }
+     */
 }
