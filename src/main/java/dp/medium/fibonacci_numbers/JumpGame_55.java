@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.fibonacci_numbers;
 
 import java.util.Arrays;
 
@@ -10,18 +10,22 @@ public class JumpGame_55 {
         // time O(n^n)
         // space O(n)
 
+        // for each element we want to check all ids that can be reached
+        // in range [ind + 1, ind + nums[ind]]
+
         return jump1(nums, 0);
     }
 
     private boolean jump1(int[] nums, int ind) {
-        if(ind == nums.length - 1)
+        int n = nums.length;
+        if(ind == n - 1)
             return true;
         if(nums[ind] == 0)
             return false;
 
         // jump can be in range [ind + 1, ind + nums[ind]]
-        for(int i = ind + 1; i <= ind + nums[ind]; i++)
-            if(i < nums.length && jump1(nums, i))
+        for(int i = ind + 1; i <= Math.min(ind + nums[ind], n - 1); i++)
+            if(jump1(nums, i))
                 return true;
 
         return false;
@@ -29,62 +33,56 @@ public class JumpGame_55 {
 
     // solution2
     public boolean canJump2(int[] nums) {
-        // dp with memo
+        // top down, memo
         // time O(n^2), for each index, I can have at max N jumps, hence O(N* N).
         // space O(n) + O(n), stack space plus dp array size
-        Boolean[] dp = new Boolean[nums.length];
+        Boolean[] memo = new Boolean[nums.length];
 
-        return jump2(nums, 0, dp);
+        return jump2(nums, 0, memo);
     }
 
-    private boolean jump2(int[] nums, int ind, Boolean[] dp) {
-        if(ind == nums.length - 1)
+    private boolean jump2(int[] nums, int ind, Boolean[] memo) {
+        int n = nums.length;
+        if(ind == n - 1)
             return true;
         if(nums[ind] == 0)
             return false;
+        if(memo[ind] != null)
+            return memo[ind];
 
-        if(dp[ind] != null) return dp[ind];
         // jump can be in range [ind + 1, ind + nums[ind]]
-        for(int i = ind + 1; i <= ind + nums[ind]; i++)
-            if(i < nums.length && jump2(nums, i, dp))
-                return dp[ind] = true;
+        for(int i = ind + 1; i <= Math.min(ind + nums[ind], n - 1); i++)
+            if(jump2(nums, i, memo))
+                return memo[ind] = true;
 
-        return dp[ind] = false;
+        return memo[ind] = false;
     }
 
     // solution3
     public boolean canJump3(int[] nums) {
-        // dp with memo, iterative
-        // time O(n^2), for each index, I can have at max N jumps, hence O(N*N).
-        // space O(n), dp array size
+        // top down, memo
+        // time O(n^2), at each index we can have at most n jumps
+        // space O(n)
+
+        // dp[i] - flag if we can reach last position
 
         int n = nums.length;
-        int[] dp = new int[n];
-        Arrays.fill(dp, -1);
-        dp[n - 1] = 1;
+        boolean[] dp = new boolean[n];
+        dp[n - 1] = true;
 
-        for(int ind = n - 2; ind >= 0; ind--) {
-            if(nums[ind] == 0) {
-                dp[ind] = 0;
-                continue;
-            }
+        for(int i = n - 2; i >= 0; i--) {
+            int start = i + 1;
+            int end = Math.min(i + nums[i], n - 1);
 
-            int flag = 0;
-            int reach = ind + nums[ind];
-            for(int jump = ind + 1; jump <= reach; jump++)
-                if(jump < nums.length && dp[jump] == 1) {
-                    dp[ind] = 1;
-                    flag = 1;
+            for(int j = start; j <= end; j++) {
+                if(dp[j]) {
+                    dp[i] = true;
                     break;
                 }
-
-            if(flag == 1)
-                continue;
-
-            dp[ind] = 0;
+            }
         }
 
-        return dp[0] == 1;
+        return dp[0];
     }
 
     // solution4
