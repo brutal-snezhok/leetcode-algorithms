@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.fibonacci_numbers;
 
 import java.util.Arrays;
 

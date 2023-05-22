@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.fibonacci_numbers;
 
 // https://leetcode.com/problems/unique-paths-ii/
 public class UniquePathsII_63 {
@@ -84,4 +84,37 @@ public class UniquePathsII_63 {
 
         return dp[m - 1][n - 1];
     }
+
+    /*
+     *  public int uniquePathsWithObstacles(int[][] grid) {
+     *         // bottom-up, tabulation
+     *         // time O(n * m)
+     *         // space O(n * m)
+     *
+     *         int m = grid.length;
+     *         int n = grid[0].length;
+     *
+     *         if(grid[m - 1][n - 1] == 1 || grid[0][0] == 1)
+     *             return 0;
+     *
+     *         int[][] dp = new int[m][n];
+     *         dp[0][0] = 1;
+     *
+     *         for(int i = 0; i < m; i++) {
+     *             for(int j = 0; j < n; j++) {
+     *                 if(i == 0 && j == 0)
+     *                     continue;
+     *
+     *                 if(grid[i][j] == 1)
+     *                     dp[i][j] = 0;
+     *                 else {
+     *                     dp[i][j] = dp[Math.max(i - 1, 0)][j] + dp[i][Math.max(j - 1, 0)];
+     *                 }
+     *             }
+     *         }
+     *
+     *         return dp[m - 1][n - 1];
+     *     }
+     */
+
 }
