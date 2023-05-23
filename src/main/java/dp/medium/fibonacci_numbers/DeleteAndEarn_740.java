@@ -1,4 +1,4 @@
-package dp.medium;
+package dp.medium.fibonacci_numbers;
 
 // https://leetcode.com/problems/delete-and-earn/description/
 public class DeleteAndEarn_740 {
@@ -115,4 +115,28 @@ public class DeleteAndEarn_740 {
 
         return prev;
     }
+
+    /*
+    * public int deleteAndEarn(int[] nums) {
+        // time O(n)
+        // space O(1)
+
+        // dp[i + 1] = max(dp[i], dp[i - 1] + nums[i + 1] * count)
+
+        int[] sum = new int[10001];
+        for(int num : nums)
+            sum[num] += num;
+
+        int prevPrev = 0;
+        int prev = 0;
+
+        for(int i = 0; i < 10001; i++) {
+            int temp = Math.max(prev, prevPrev + sum[i]);
+            prevPrev = prev;
+            prev = temp;
+        }
+
+        return prev;
+    }
+    * */
 }
