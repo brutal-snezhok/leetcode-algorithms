@@ -61,7 +61,7 @@ public class LongestPalindromicSubsequence_516 {
 
     // solution3
     public int longestPalindromeSubseq3(String s) {
-        // borrom up, dp
+        // bottom up, dp
         // time O(n*n)
         // space O(n*n)
 
