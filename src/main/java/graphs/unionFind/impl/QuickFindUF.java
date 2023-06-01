@@ -1,4 +1,4 @@
-package graphs.unionFind;
+package graphs.unionFind.impl;
 
 public class QuickFindUF {
 
@@ -21,16 +21,17 @@ public class QuickFindUF {
         return find(p) == find(q);
     }
 
+    // change all ids from p component to q component, since they are connected now
     public void union(int p, int q) {
-        int pID = find(p);
-        int qID = find(q);
+        int componentPID = find(p);
+        int componentQID = find(q);
 
         // p and q are already in the same component
-        if (pID == qID) return;
+        if (componentPID == componentQID) return;
 
         for(int i = 0; i < id.length; i++)
-            if(id[i] == pID)
-                id[i] = qID;
+            if(id[i] == componentPID)
+                id[i] = componentQID;
        count--;
     }
 

@@ -1,4 +1,4 @@
-package graphs.unionFind;
+package graphs.unionFind.impl;
 
 public class QuickUnionUF {
     private int[] parent;  // parent[i] = parent of i
