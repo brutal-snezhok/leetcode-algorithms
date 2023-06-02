@@ -8,7 +8,7 @@ import java.util.List;
 public class TreeSum_15 {
     public List<List<Integer>> threeSum(int[] nums) {
         // time O(n^2)
-        // space O(1)
+        // space O(n), requires for sorting if ignore the output
 
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
