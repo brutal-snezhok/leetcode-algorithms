@@ -24,7 +24,7 @@ public class PathSumIII_437 {
             return 0;
 
         list.add(root.val);
-        long sum = 0;
+        long sum = 0; // pay attention!
         int pathCount = 0;
         for(int i = list.size() - 1; i >= 0; i--) {
             sum += list.get(i);
