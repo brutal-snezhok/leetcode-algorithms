@@ -6,7 +6,8 @@ import java.util.List;
 
 // https://leetcode.com/problems/merge-intervals/
 public class MergeIntervals_56 {
-    public int[][] merge(int[][] intervals) {
+    // solution1
+    public int[][] merge1(int[][] intervals) {
         // time O(nlogn)
         // space O(n), if count res arr. And O(logn) if do not count res arr
 
@@ -16,27 +17,20 @@ public class MergeIntervals_56 {
         // merge if it is necessary
 
         Arrays.sort(intervals, (arr1, arr2) -> arr1[0] - arr2[0]);
-        List<int[]> listOfIntervals = new ArrayList<>();
-        for (int[] interval : intervals) {
-            if (listOfIntervals.isEmpty()) {
-                listOfIntervals.add(interval);
-                continue;
-            }
+        List<int[]> merged = new ArrayList<>();
+        merged.add(intervals[0]);
 
-            int size = listOfIntervals.size();
-            int[] prev = listOfIntervals.get(size - 1);
-            if (prev[1] < interval[0]) // prev end < curr start
-                listOfIntervals.add(interval);
-            else { // prev end >= curr start
-                prev[1] = Math.max(prev[1], interval[1]);
-            }
+        for (int i = 1; i < intervals.length; i++) {
+            int[] prev = merged.get(merged.size() - 1);
+            int[] curr = intervals[i];
+
+            if (prev[1] >= curr[0])
+                prev[1] = Math.max(prev[1], curr[1]);
+            else
+                merged.add(curr);
         }
 
-        int[][] res = new int[listOfIntervals.size()][2];
-        int i = 0;
-        for (int[] interval : listOfIntervals)
-            res[i++] = interval;
-
-        return res;
+        int size = merged.size();
+        return merged.toArray(new int[size][2]);
     }
 }
