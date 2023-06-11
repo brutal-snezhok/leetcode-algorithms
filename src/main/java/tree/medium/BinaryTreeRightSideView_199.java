@@ -9,7 +9,8 @@ import java.util.Queue;
 
 // https://leetcode.com/problems/binary-tree-right-side-view/
 public class BinaryTreeRightSideView_199 {
-    public List<Integer> rightSideView(TreeNode root) {
+    // solution1
+    public List<Integer> rightSideView1(TreeNode root) {
         // bfs
         // time O(n)
         // space O(n)
@@ -36,5 +37,34 @@ public class BinaryTreeRightSideView_199 {
         }
 
         return values;
+    }
+
+    // solution2
+    public List<Integer> rightSideView2(TreeNode root) {
+        // time O(n)
+        // space O(n)
+
+        List<Integer> res = new ArrayList<>();
+        if(root == null)
+            return res;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()) {
+            int size = q.size();
+
+            for(int i = 0; i < size; i++) {
+                TreeNode node = q.poll();
+                if(i == size - 1)
+                    res.add(node.val);
+
+                if(node.left != null)
+                    q.add(node.left);
+                if(node.right != null)
+                    q.add(node.right);
+            }
+        }
+
+        return res;
     }
 }
