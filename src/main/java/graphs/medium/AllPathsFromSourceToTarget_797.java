@@ -1,7 +1,9 @@
 package graphs.medium;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 // https://leetcode.com/problems/all-paths-from-source-to-target/description/
 public class AllPathsFromSourceToTarget_797 {
@@ -9,7 +11,7 @@ public class AllPathsFromSourceToTarget_797 {
     // https://leetcode.com/problems/all-paths-from-source-to-target/solutions/986429/python-iterative-dfs-with-detailed-time-complexity-visuals/
 
     // solution1
-    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+    public List<List<Integer>> allPathsSourceTarget1(int[][] graph) {
         // backtracking
         // time O(2^n)
         // space O(n)
@@ -36,5 +38,39 @@ public class AllPathsFromSourceToTarget_797 {
         }
 
         curr.remove(curr.size() - 1);
+    }
+
+    // solution2
+    public List<List<Integer>> allPathsSourceTarget2(int[][] graph) {
+        // bfs
+        // time O(2^n)
+        // space O(n)
+
+        List<List<Integer>> res = new ArrayList<>();
+        int n = graph.length;
+        Queue<List<Integer>> q = new LinkedList<>();
+
+        List<Integer> curr = new ArrayList<>();
+        curr.add(0);
+
+        q.add(curr);
+
+        while(!q.isEmpty()) {
+            List<Integer> path = q.poll();
+
+            int lastV = path.get(path.size() - 1);
+            if(lastV == n - 1) {
+                res.add(path);
+                continue;
+            }
+
+            for(int v : graph[lastV]) {
+                List<Integer> newPath = new ArrayList<>(path);
+                newPath.add(v);
+                q.add(newPath);
+            }
+        }
+
+        return res;
     }
 }

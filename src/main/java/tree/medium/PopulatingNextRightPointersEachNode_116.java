@@ -2,6 +2,9 @@ package tree.medium;
 
 import tree.Node;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 // https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
 public class PopulatingNextRightPointersEachNode_116 {
     // solution1
@@ -75,6 +78,43 @@ public class PopulatingNextRightPointersEachNode_116 {
                     curr.right.next = curr.next.left;
 
                 curr = curr.next;
+            }
+        }
+
+        return root;
+    }
+
+    // solution4
+    public Node connect4(Node root) {
+        // bfs
+        // time O(n)
+        // space O(n)
+
+        if(root == null)
+            return root;
+
+        Node node = root;
+        Queue<Node> q = new LinkedList<>();
+        q.add(node);
+
+        while(!q.isEmpty()) {
+            int size = q.size();
+            Node prev = q.poll();
+            if(prev.left != null)
+                q.add(prev.left);
+            if(prev.right != null)
+                q.add(prev.right);
+
+            for(int i = 1; i < size; i++) {
+                Node curr = q.poll();
+                prev.next = curr;
+
+                if(curr.left != null)
+                    q.add(curr.left);
+                if(curr.right != null)
+                    q.add(curr.right);
+
+                prev = curr;
             }
         }
 
