@@ -1,4 +1,4 @@
-package graphs.medium;
+package graphs.medium.mst;
 
 import java.util.*;
 

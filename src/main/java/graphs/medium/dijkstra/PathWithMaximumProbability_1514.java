@@ -1,4 +1,4 @@
-package graphs.medium;
+package graphs.medium.dijkstra;
 
 import java.util.*;
 
