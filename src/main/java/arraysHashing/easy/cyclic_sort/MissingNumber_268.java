@@ -1,4 +1,4 @@
-package arraysHashing.easy;
+package arraysHashing.easy.cyclic_sort;
 
 // https://leetcode.com/problems/missing-number/description/
 public class MissingNumber_268 {
