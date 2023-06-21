@@ -1,12 +1,15 @@
-package stack.medium;
+package stack.monotonic;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
+import java.util.Stack;
 
 // https://leetcode.com/problems/next-greater-element-ii/description/
 public class NextGreaterElementII_503 {
-    public int[] nextGreaterElements(int[] nums) {
+    // solution1
+    public int[] nextGreaterElements1(int[] nums) {
+        // monotonic stack
         // time O(n)
         // space O(n)
 
@@ -35,5 +38,27 @@ public class NextGreaterElementII_503 {
             this.val = val;
             this.ind = ind;
         }
+    }
+
+    // solution2
+    public int[] nextGreaterElements2(int[] nums) {
+        // monotonic stack
+        // time O(n)
+        // space O(n)
+
+        int n = nums.length;
+        Stack<int[]> s = new Stack<>(); // [val, ind], non increasing
+        int[] res = new int[n];
+        Arrays.fill(res, -1);
+        for(int i = 0; i < 2 * n; i++) {
+            int ind = i % n;
+            while(!s.isEmpty() && s.peek()[0] < nums[ind]) {
+                int[] poped = s.pop();
+                res[poped[1]] = nums[ind];
+            }
+            s.push(new int[]{nums[ind], ind});
+        }
+
+        return res;
     }
 }
