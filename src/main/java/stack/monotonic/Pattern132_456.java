@@ -1,4 +1,4 @@
-package stack.medium;
+package stack.monotonic;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
