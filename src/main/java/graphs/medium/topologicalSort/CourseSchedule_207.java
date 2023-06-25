@@ -1,10 +1,11 @@
-package graphs.medium;
+package graphs.medium.topologicalSort;
 
 import java.util.*;
 
 // https://leetcode.com/problems/course-schedule/description/
 public class CourseSchedule_207 {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    // solution1
+    public boolean canFinish1(int numCourses, int[][] prerequisites) {
         // time O(n + m)
         // space O(n + m)
 
@@ -41,6 +42,49 @@ public class CourseSchedule_207 {
         return true;
     }
 
+    // solution2
+    public boolean canFinish2(int n, int[][] prerequisites) {
+        // Kahn's BFS Based, topological sort
+        // time O(V + E)
+        // space O(V + E)
+
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<Integer, Integer> inDegree = new HashMap<>();
+
+        // init graph
+        for(int i = 0; i < n; i++) {
+            map.put(i, new ArrayList<>());
+            inDegree.put(i, 0);
+        }
+
+        // build graph
+        for(int[] pre : prerequisites) {
+            int parent = pre[0];
+            int child = pre[1];
+            map.get(parent).add(child);
+            inDegree.put(child, inDegree.get(child) + 1);
+        }
+
+        Queue<Integer> sources = new LinkedList<>();
+        for(Map.Entry<Integer, Integer> entry : inDegree.entrySet())
+            if(entry.getValue() == 0)
+                sources.add(entry.getKey());
+
+        int res = 0;
+        while(!sources.isEmpty()) {
+            int vertex = sources.poll();
+            res++;
+            for(int child : map.get(vertex)) {
+                inDegree.put(child, inDegree.get(child) - 1);
+                if(inDegree.get(child) == 0)
+                    sources.add(child);
+            }
+
+        }
+
+        return res == n;
+    }
+
     public static void main(String[] args) {
         CourseSchedule_207 course = new CourseSchedule_207();
 //        course.canFinish(5, new int[][]{
@@ -51,7 +95,7 @@ public class CourseSchedule_207 {
 //                {3, 4}
 //        });
 
-        course.canFinish(3, new int[][]{
+        course.canFinish1(3, new int[][]{
                 {0, 1},
                 {1, 2},
                 {2, 0}

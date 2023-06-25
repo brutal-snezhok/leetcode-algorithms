@@ -13,7 +13,8 @@ public class ArrayIndexElementEquality {
       output: -1
     * */
 
-    static int indexEqualsValueSearch(int[] arr) {
+    // solution1
+    static int indexEqualsValueSearch1(int[] arr) {
         /*    0 1 2 3
              [-8,0,2,5]
         arr[m]!=m
@@ -25,7 +26,6 @@ public class ArrayIndexElementEquality {
 
         while(l <= r) {
             int mid = (l + r) / 2;
-            // int target=;
             if(arr[mid] == mid) {
                 res = mid;
                 r = mid - 1;
@@ -34,6 +34,27 @@ public class ArrayIndexElementEquality {
                 l = mid + 1;
             else
                 r = mid - 1;
+        }
+
+        return res;
+    }
+
+    // solution2
+    static int indexEqualsValueSearch2(int[] arr) {
+        int l = 0;
+        int r = arr.length;
+        int res = -1;
+
+        while(l < r) {
+            int mid = l + (r - l) / 2;
+
+            if(arr[mid] == mid) {
+                res = mid;
+                r = mid;
+            } else if(arr[mid] > mid)
+                r = mid;
+            else
+                l = mid + 1;
         }
 
         return res;
