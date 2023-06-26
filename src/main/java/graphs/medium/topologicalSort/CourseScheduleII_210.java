@@ -10,6 +10,11 @@ public class CourseScheduleII_210 {
         // time O(V + E)
         // space O(V + E)
 
+        // a course has 3 possible states:
+        // visited - crs has been added to output
+        // visiting - crs not added to output, but added to cycle
+        // unvisited - crs not added to output or cycle
+
         boolean[] visited = new boolean[numCourses];
         boolean[] visiting = new boolean[numCourses];
 
