@@ -34,7 +34,7 @@ public class ShiftedArraySearch {
         int n = arr.length;
         int pivot = findPivot(arr);
         int res1 = binarySearch(arr, 0, pivot - 1, target);
-        if(res1 != -1)
+        if (res1 != -1)
             return res1;
 
         return binarySearch(arr, pivot, n - 1, target);
@@ -44,10 +44,10 @@ public class ShiftedArraySearch {
         int l = 0;
         int r = arr.length - 1;
 
-        while(l < r) {
+        while (l < r) {
             int mid = l + (r - l) / 2;
 
-            if(arr[mid] <= arr[r])
+            if (arr[mid] <= arr[r])
                 r = mid;
             else
                 l = mid + 1;
@@ -57,10 +57,10 @@ public class ShiftedArraySearch {
     }
 
     private int binarySearch(int[] arr, int l, int r, int target) {
-        while(l < r) {
+        while (l < r) {
             int mid = l + (r - l) / 2;
 
-            if(arr[mid] >= target)
+            if (arr[mid] >= target)
                 r = mid;
             else
                 l = mid + 1;
