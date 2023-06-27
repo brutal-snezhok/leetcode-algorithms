@@ -2,7 +2,9 @@ package binarySearch.easy;
 
 // https://leetcode.com/problems/binary-search/description/
 public class BinarySearch_704 {
-    public int search(int[] nums, int target) {
+
+    // solution1
+    public int search1(int[] nums, int target) {
         // time O(logn)
         // space O(1)
 
@@ -21,5 +23,26 @@ public class BinarySearch_704 {
         }
 
         return -1;
+    }
+
+    // solution2
+    public int search2(int[] nums, int target) {
+        // find lower bound
+        // time O(logn)
+        // space O(1)
+
+        int l = 0;
+        int r = nums.length - 1;
+        while(l < r) {
+            int mid = l + (r - l) / 2;
+
+            if(nums[mid] >= target)
+                r = mid;
+            else
+                l = mid + 1;
+        }
+
+        // l - minimal val satisfying the condition in if statement
+        return (l < nums.length && nums[l] == target) ? l : -1;
     }
 }
