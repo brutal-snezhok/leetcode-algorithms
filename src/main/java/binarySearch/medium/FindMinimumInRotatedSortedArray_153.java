@@ -2,7 +2,8 @@ package binarySearch.medium;
 
 // https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 public class FindMinimumInRotatedSortedArray_153 {
-    public int findMin(int[] nums) {
+    // solution1
+    public int findMin1(int[] nums) {
         // time O(logn)
         // space O(1)
 
@@ -28,5 +29,35 @@ public class FindMinimumInRotatedSortedArray_153 {
         }
 
         return res;
+    }
+
+    // solution2
+    public int findMin2(int[] nums) {
+        // time O(logn)
+        // space O(1)
+
+        /*   0 1 2 3 4
+            [3,4,5,1,2]
+             l   m   r
+
+             if(nums[mid] < nums[r])
+                r = mid;
+             else
+                l = mid + 1;
+        */
+
+        int l = 0;
+        int r = nums.length - 1;
+
+        while(l < r) {
+            int mid = l + (r - l) / 2;
+
+            if(nums[mid] < nums[r])
+                r = mid;
+            else
+                l = mid + 1;
+        }
+
+        return nums[l];
     }
 }
