@@ -7,6 +7,8 @@ public class RangeSumQuery2DImmutable_304 {
     int[][] m;
 
     public RangeSumQuery2DImmutable_304(int[][] matrix) {
+        // time O(m*n) precomputation
+        // space O(m*n)
         ROWS = matrix.length;
         COLS = matrix[0].length;
         m = new int[ROWS][COLS];
@@ -24,6 +26,7 @@ public class RangeSumQuery2DImmutable_304 {
 
     public int sumRegion(int r1, int c1, int r2, int c2) {
         // time O(1)
+        // space O(1)
         // res = bigRec - upRec - leftRec + overlapRec
         // res = m[r2][c2] - m[r1 - 1][c2] - m[r2][c1 - 1] + m[r1 - 1][c1 - 1]
 
