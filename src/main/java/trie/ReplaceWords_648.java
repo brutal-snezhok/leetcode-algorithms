@@ -1,4 +1,4 @@
-package trie.medium;
+package trie;
 
 import java.util.List;
 

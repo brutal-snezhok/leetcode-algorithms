@@ -1,4 +1,4 @@
-package trie.medium;
+package trie;
 
 // https://leetcode.com/problems/design-add-and-search-words-data-structure/
 public class DesignAddSearchWordsDataStructure_211_ArraySolution {

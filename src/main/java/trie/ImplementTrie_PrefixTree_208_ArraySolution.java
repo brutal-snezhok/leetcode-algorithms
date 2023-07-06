@@ -1,4 +1,4 @@
-package trie.medium;
+package trie;
 
 // https://leetcode.com/problems/implement-trie-prefix-tree/description/
 public class ImplementTrie_PrefixTree_208_ArraySolution {
