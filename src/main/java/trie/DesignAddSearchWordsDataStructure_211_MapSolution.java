@@ -13,9 +13,9 @@ public class DesignAddSearchWordsDataStructure_211_MapSolution {
 
     public void addWord(String word) {
         Node curr = root;
-        for(char ch : word.toCharArray()) {
+        for (char ch : word.toCharArray()) {
             Map<Character, Node> children = curr.children;
-            if(!children.containsKey(ch))
+            if (!children.containsKey(ch))
                 children.put(ch, new Node());
 
             curr = children.get(ch);
@@ -28,23 +28,23 @@ public class DesignAddSearchWordsDataStructure_211_MapSolution {
     }
 
     private boolean searchHelper(String word, Node curr, int ind) {
-        for(int i = ind; i < word.length(); i++) {
+        for (int i = ind; i < word.length(); i++) {
             char ch = word.charAt(i);
-            if(ch == '.') {
-                for(Node node : curr.children.values()){
+            if (ch == '.') {
+                for (Node node : curr.children.values()) {
                     if (node != null && searchHelper(word, node, i + 1)) {
                         return true;
                     }
                 }
 
                 return false;
-            } else {
-                Map<Character, Node> children = curr.children;
-                if(!children.containsKey(ch))
-                    return false;
-
-                curr = children.get(ch);
             }
+
+            Map<Character, Node> children = curr.children;
+            if (!children.containsKey(ch))
+                return false;
+
+            curr = children.get(ch);
         }
 
         return curr.isEnd;

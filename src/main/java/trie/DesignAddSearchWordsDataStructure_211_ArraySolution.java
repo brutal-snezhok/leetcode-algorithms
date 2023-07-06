@@ -27,18 +27,18 @@ public class DesignAddSearchWordsDataStructure_211_ArraySolution {
         for(int i = ind; i < word.length(); i++) {
             char ch = word.charAt(i);
             if(ch == '.') {
-                for(int j = 0; j < 26; j++) {
-                    if(curr.children[j] != null && searchHelper(word, curr.children[j], i + 1))
+                // check all children instead of .
+                for(Node node : curr.children) {
+                    if(node != null && searchHelper(word, node, i + 1))
                         return true;
                 }
 
                 return false;
-            } else {
-                if(curr.children[ch - 'a'] == null)
-                    return false;
-
-                curr = curr.children[ch - 'a'];
             }
+
+            if(curr.children[ch - 'a'] == null)
+                return false;
+            curr = curr.children[ch - 'a'];
         }
 
         return curr.isWord;
