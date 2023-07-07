@@ -13,6 +13,8 @@ public class WordSearchII_212 {
         // time O(m*n*wl*4^wl), wl - avg length of words
         // space O(m*n + words.length)
 
+        // idea: at the same time traverse trie and do dfs on board
+
         Trie trie = new Trie();
         for(String w : words)
             trie.insert(w);
