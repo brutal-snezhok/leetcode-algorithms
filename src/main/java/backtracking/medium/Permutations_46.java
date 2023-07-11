@@ -1,13 +1,16 @@
 package backtracking.medium;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // https://leetcode.com/problems/permutations/description/
 public class Permutations_46 {
-    public List<List<Integer>> permute(int[] nums) {
-        // time O(n!*n)
-        // space O(n!)
+    // solution1
+    public List<List<Integer>> permute1(int[] nums) {
+        // time O(n!*n), n - depth of decision tree(length of arr), n! - number of leaves of this tree
+        // space O(n)
 
         List<List<Integer>> res = new ArrayList<>();
         backtracking(nums, res, new ArrayList<>());
@@ -52,17 +55,11 @@ public class Permutations_46 {
         }
     }
 
-
-
-
-
-    /////////////////////////////////////////////////////////////////////////////////////
-
-
+    // solution2
     public List<List<Integer>> permute2(int[] nums) {
-        // optimized solution
+        // optimized solution with swaps
         // time O(n!*n)
-        // space O(n!)
+        // space O(n)
 
         List<List<Integer>> res = new ArrayList<>();
         backtracking2(nums, res, new ArrayList<>(), 0);
@@ -96,5 +93,35 @@ public class Permutations_46 {
         int temp = nums[start];
         nums[start] = nums[i];
         nums[i] = temp;
+    }
+
+    // solution3
+    public List<List<Integer>> permute3(int[] nums) {
+        // solution with set to check in O(1) if element already in list
+        // time O(n*n!)
+        // space O(n)
+
+        List<List<Integer>> res = new ArrayList<>();
+        backtracking(res, new ArrayList<>(), new HashSet<>(), nums);
+
+        return res;
+    }
+
+    private void backtracking(List<List<Integer>> res, List<Integer> curr, Set<Integer> set, int[] nums) {
+        if(set.size() == nums.length) {
+            res.add(new ArrayList<>(curr));
+            return;
+        }
+
+        for(int num : nums) {
+            if(set.contains(num))
+                continue;
+
+            set.add(num);
+            curr.add(num);
+            backtracking(res, curr, set, nums);
+            set.remove(num);
+            curr.remove(curr.size() - 1);
+        }
     }
 }

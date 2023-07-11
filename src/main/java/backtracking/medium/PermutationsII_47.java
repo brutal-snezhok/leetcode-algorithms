@@ -37,4 +37,9 @@ public class PermutationsII_47 {
             used[i] = false;
         }
     }
+
+    public static void main(String[] args) {
+        PermutationsII_47 task = new PermutationsII_47();
+        task.permuteUnique(new int[]{1,1,1,2,2});
+    }
 }
