@@ -40,7 +40,7 @@ public class FindIfPathExistsInGraph_1971 {
     }
 
     // solution2
-    public boolean validPath2(int n, int[][] edges, int source, int destination) {
+    public boolean validPath(int n, int[][] edges, int source, int destination) {
         // bfs
         // time O(n + m), n - num of nodes, m - num of edges
         // space O(n + m)
@@ -51,6 +51,41 @@ public class FindIfPathExistsInGraph_1971 {
             map.computeIfAbsent(edge[1], v -> new ArrayList<>()).add(edge[0]);
         }
 
+        return bfs1(source, destination, map, n);
+        //return bfs2(source, destination, map, n);
+    }
+
+    private boolean bfs1(int source, int destination, Map<Integer, List<Integer>> map, int n) {
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] visited = new boolean[n];
+        q.add(source);
+
+        while(!q.isEmpty()) {
+            int size = q.size();
+
+            for(int i = 0; i < size; i++) {
+                int u = q.poll();
+
+                if(u == destination)
+                    return true;
+
+                if(visited[u])
+                    continue;
+
+                visited[u] = true;
+
+                List<Integer> adjVertex = map.get(u);
+                for(int v : adjVertex) {
+                    if(!visited[v])
+                        q.add(v);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private boolean bfs2(int source, int destination, Map<Integer, List<Integer>> map, int n) {
         Queue<Integer> q = new LinkedList<>();
         boolean[] visited = new boolean[n];
         q.add(source);
@@ -65,13 +100,11 @@ public class FindIfPathExistsInGraph_1971 {
                 if(u == destination)
                     return true;
 
-                //visited[u] = true; TLE if marked after taking from q
-
                 List<Integer> adjVertex = map.get(u);
                 for(int v : adjVertex) {
                     if(!visited[v]) {
-                        visited[v] = true;
                         q.add(v);
+                        visited[v] = true;
                     }
                 }
             }
