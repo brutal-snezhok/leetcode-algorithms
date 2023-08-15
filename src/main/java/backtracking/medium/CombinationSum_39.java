@@ -40,4 +40,9 @@ public class CombinationSum_39 {
                 return;
         }
     }
+
+    public static void main(String[] args) {
+        CombinationSum_39 combination = new CombinationSum_39();
+        combination.combinationSum(new int[]{6,3,2,7}, 7);
+    }
 }
