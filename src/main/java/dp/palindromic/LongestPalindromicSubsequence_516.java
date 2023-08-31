@@ -1,4 +1,4 @@
-package dp.longest_common_substr;
+package dp.palindromic;
 
 // https://leetcode.com/problems/longest-palindromic-subsequence/description/
 public class LongestPalindromicSubsequence_516 {
