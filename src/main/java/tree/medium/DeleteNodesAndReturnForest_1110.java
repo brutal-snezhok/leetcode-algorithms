@@ -2,14 +2,12 @@ package tree.medium;
 
 import tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 // https://leetcode.com/problems/delete-nodes-and-return-forest/description/
 public class DeleteNodesAndReturnForest_1110 {
-    public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
+    // solution1
+    public List<TreeNode> delNodes1(TreeNode root, int[] to_delete) {
         // time O(n)
         // space O(n)
 
@@ -39,5 +37,51 @@ public class DeleteNodesAndReturnForest_1110 {
         node.right = dfs(node.right, deleteSet, res, isDeleted);
 
         return isDeleted ? null : node;
+    }
+
+    // solution2
+    public List<TreeNode> delNodes2(TreeNode root, int[] to_delete) {
+        // time O(n)
+        // space O(n)
+
+        /*
+            1. traverse tree and pass parent at each step of dfs
+            2. if node exists in to_delete -> remove connection parent -- this child
+            3. if no just go forward
+
+            note: we should put root of tree in res list only if parent-child rel removed
+        */
+
+        Set<Integer> toDelete = new HashSet<>();
+        for(int num : to_delete)
+            toDelete.add(num);
+
+        List<TreeNode> res = new ArrayList<>();
+        dfs(root, null, toDelete, res, true);
+
+        return res;
+    }
+
+    private void dfs(TreeNode curr, TreeNode parent, Set<Integer> toDelete, List<TreeNode> res, boolean isRoot) {
+        if(curr == null)
+            return;
+
+        if(toDelete.contains(curr.val)) {
+            if(parent != null) {
+                if(parent.left == curr)
+                    parent.left = null;
+                else
+                    parent.right = null;
+            }
+
+            dfs(curr.left, null, toDelete, res, true);
+            dfs(curr.right, null, toDelete, res, true);
+        } else {
+            if(isRoot)
+                res.add(curr);
+
+            dfs(curr.left, curr, toDelete, res, false);
+            dfs(curr.right, curr, toDelete, res, false);
+        }
     }
 }
