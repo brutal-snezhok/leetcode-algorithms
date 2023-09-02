@@ -58,6 +58,47 @@ public class PartitionEqualSubsetSum_416 {
         return memo[i][sum];
     }
 
+    // solution2_1
+    public boolean canPartition2_1(int[] nums) {
+        // time O(n * sum)
+        // space O(n * sum)
+
+        /*
+            1. count sum of array
+            2. if sum % 2 != 0 -> return false
+            3. sumOfSubset = sum / 2;
+            4. go through arr and we have two choices whether we can take or not the element
+        */
+
+        int sum = 0;
+        for(int num : nums)
+            sum += num;
+
+        if(sum % 2 != 0)
+            return false;
+
+        Boolean[][] memo = new Boolean[nums.length][sum / 2 + 1];
+
+        return backtracking(nums, 0, sum / 2, 0, memo);
+    }
+
+    private boolean backtracking(int[] nums, int ind, int subsetSum, int currSum, Boolean[][] memo) {
+        if(currSum == subsetSum)
+            return true;
+        if(ind == nums.length)
+            return false;
+        if(memo[ind][currSum] != null)
+            return memo[ind][currSum];
+
+        boolean take = false;
+        if(currSum + nums[ind] <= subsetSum)
+            take = backtracking(nums, ind + 1, subsetSum, currSum + nums[ind], memo);
+
+        boolean notTake = backtracking(nums, ind + 1, subsetSum, currSum, memo);
+
+        return memo[ind][currSum] = take || notTake;
+    }
+
     // solution3
     int total1;
     public boolean canPartition3(int[] nums) {

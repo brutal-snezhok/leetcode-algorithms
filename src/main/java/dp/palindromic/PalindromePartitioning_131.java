@@ -1,4 +1,4 @@
-package backtracking.medium;
+package dp.palindromic;
 
 import java.util.ArrayList;
 import java.util.List;
