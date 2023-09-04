@@ -12,13 +12,13 @@ public class EditDistance_72 {
     }
 
     private int dfs(String w1, String w2, int p1, int p2) {
-        if(p1 == w1.length())
+        if (p1 == w1.length())
             return w2.length() - p2;
-        if(p2 == w2.length())
+        if (p2 == w2.length())
             return w1.length() - p1;
 
         int res = w1.length() + w2.length();
-        if(w1.charAt(p1) == w2.charAt(p2))
+        if (w1.charAt(p1) == w2.charAt(p2))
             res = Math.min(res, dfs(w1, w2, p1 + 1, p2 + 1));
         else {
             // Insert
@@ -48,15 +48,15 @@ public class EditDistance_72 {
     }
 
     private int dfs(String w1, String w2, int p1, int p2, Integer[][] memo) {
-        if(p1 == w1.length())
+        if (p1 == w1.length())
             return w2.length() - p2;
-        if(p2 == w2.length())
+        if (p2 == w2.length())
             return w1.length() - p1;
-        if(memo[p1][p2] != null)
+        if (memo[p1][p2] != null)
             return memo[p1][p2];
 
         int res = w1.length() + w2.length();
-        if(w1.charAt(p1) == w2.charAt(p2))
+        if (w1.charAt(p1) == w2.charAt(p2))
             res = Math.min(res, dfs(w1, w2, p1 + 1, p2 + 1, memo));
         else {
             // Insert
@@ -83,18 +83,18 @@ public class EditDistance_72 {
         int[][] dp = new int[n + 1][m + 1];
 
         // Set values for base cases
-        for(int p1 = 0; p1 < n; p1++)
+        for (int p1 = 0; p1 < n; p1++)
             dp[p1][m] = n - p1;
 
-        for(int p2 = 0; p2 < m; p2++)
+        for (int p2 = 0; p2 < m; p2++)
             dp[n][p2] = m - p2;
 
         dp[n][m] = 0;
 
-        for(int p1 = n - 1; p1 >= 0; p1--) {
-            for(int p2 = m - 1; p2 >= 0; p2--) {
+        for (int p1 = n - 1; p1 >= 0; p1--) {
+            for (int p2 = m - 1; p2 >= 0; p2--) {
                 int res = n + m;
-                if(word1.charAt(p1) == word2.charAt(p2))
+                if (word1.charAt(p1) == word2.charAt(p2))
                     res = Math.min(res, dp[p1 + 1][p2 + 1]);
                 else {
                     // Insert
@@ -111,6 +111,40 @@ public class EditDistance_72 {
         }
 
         return dp[0][0];
+    }
+
+    // solution4
+    public int minDistance(String word1, String word2) {
+        // bottom up
+        // time O(m*n)
+        // space O(m*n)
+        // solution: https://leetcode.com/problems/edit-distance/solutions/1596206/java-dp-detailed-explanation-easy-to-understand/
+
+        int n = word1.length();
+        int m = word2.length();
+        int[][] dp = new int[n + 1][m + 1];
+
+        // set values for first column
+        for (int i = 0; i <= n; i++)
+            dp[i][0] = i;
+
+        // set values for first row
+        for (int i = 0; i <= m; i++)
+            dp[0][i] = i;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (word1.charAt(i - 1) == word2.charAt(j - 1))
+                    dp[i][j] = dp[i - 1][j - 1];
+                else {
+                    dp[i][j] = 1 + Math.min(dp[i - 1][j - 1],       // replace
+                                            Math.min(dp[i][j - 1],  // insert
+                                                     dp[i - 1][j]));// delete
+                }
+            }
+        }
+
+        return dp[n][m];
     }
 
     public static void main(String[] args) {
