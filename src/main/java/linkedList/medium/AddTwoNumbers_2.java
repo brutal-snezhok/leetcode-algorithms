@@ -6,7 +6,7 @@ import linkedList.ListNode;
 public class AddTwoNumbers_2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         // time O(n + m)
-        // space O(1)
+        // space O(1), if do not count res. O(max(m,n) + 1) if count res
 
         int carry = 0;
         ListNode dummy = new ListNode();
@@ -39,7 +39,7 @@ public class AddTwoNumbers_2 {
 
     public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
         // time O(n + m)
-        // space O(1)
+        // space O(1), if do not count res. O(max(m,n) + 1) if count res
 
         int carry = 0;
         ListNode dummy = new ListNode();

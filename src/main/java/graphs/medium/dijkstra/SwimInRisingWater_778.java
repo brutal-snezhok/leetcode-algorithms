@@ -1,4 +1,4 @@
-package graphs.hard;
+package graphs.medium.dijkstra;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

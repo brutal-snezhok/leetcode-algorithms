@@ -22,7 +22,7 @@ public class GuessNumberHigherOrLower_374 {
     }
 
     // solution2
-    public int guessNumber(int n) {
+    public int guessNumber2(int n) {
         int l = 1;
         int r = n;
 
@@ -36,6 +36,27 @@ public class GuessNumberHigherOrLower_374 {
         }
 
         return l; // l - minimal val satisfying the condition in if statement
+    }
+
+    // solution3
+    public int guessNumber3(int n) {
+        // time O(logn)
+        // space O(1)
+
+        long l = -1;
+        long r = n + 1L;;
+
+        while(r - l > 1) {
+            long mid = l + (r - l) / 2;
+
+            int guess = guess((int)mid);
+            if(guess == -1 || guess == 0)
+                r = mid;
+            else
+                l = mid;
+        }
+
+        return (int)r;
     }
 
     /**

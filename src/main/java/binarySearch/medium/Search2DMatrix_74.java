@@ -2,7 +2,7 @@ package binarySearch.medium;
 
 // https://leetcode.com/problems/search-a-2d-matrix/description/
 public class Search2DMatrix_74 {
-    public boolean searchMatrix(int[][] matrix, int target) {
+    public boolean searchMatrix1(int[][] matrix, int target) {
         // time O(log(n*m))
         // space O(1)
 
@@ -42,5 +42,31 @@ public class Search2DMatrix_74 {
         }
 
         return false;
+    }
+
+    // solution2
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        // time O(log(m*n))
+        // space O(1)
+
+        // convert matrix to arr. matrix[x][y] => a[x * m + y]
+        // and array to matrix. a[x] => matrix[x / m][x % m];
+
+        int n = matrix.length;
+        int m = matrix[0].length;
+
+        int l = 0;
+        int r = n * m - 1;
+
+        while(l < r) {
+            int mid = l + (r - l) / 2;
+
+            if(matrix[mid / m][mid % m] >= target)
+                r = mid;
+            else
+                l = mid + 1;
+        }
+
+        return matrix[l / m][l % m] == target;
     }
 }
