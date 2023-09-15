@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // https://leetcode.com/problems/3sum/description/
-public class TreeSum_15 {
+public class ThreeSum_15 {
     public List<List<Integer>> threeSum(int[] nums) {
         // time O(n^2)
         // space O(n), requires for sorting if ignore the output
