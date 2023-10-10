@@ -25,7 +25,7 @@ public class TopKFrequentElements_347 {
         }
 
         // populate buckets
-        for(var entry : map.entrySet()) {
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
             int value = entry.getValue();
             int key = entry.getKey();
 
