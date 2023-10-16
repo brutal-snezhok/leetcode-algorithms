@@ -5,8 +5,8 @@ import java.util.*;
 // https://leetcode.com/problems/course-schedule-ii/
 public class CourseScheduleII_210 {
     // solution1
-    public int[] findOrder1(int numCourses, int[][] prerequisites) {
-        // topological sort
+    public int[] findOrder1(int n, int[][] prerequisites) {
+        // dfs + visited + visiting arrays, topological sort
         // time O(V + E)
         // space O(V + E)
 
@@ -15,95 +15,139 @@ public class CourseScheduleII_210 {
         // visiting - crs not added to output, but added to cycle
         // unvisited - crs not added to output or cycle
 
-        boolean[] visited = new boolean[numCourses];
-        boolean[] visiting = new boolean[numCourses];
+        Map<Integer, List<Integer>> adjMap = new HashMap<>();
+        for (int i = 0; i < n; i++)
+            adjMap.put(i, new ArrayList<>());
 
-        Map<Integer, List<Integer>> preMap = new HashMap<>();
-        for (int i = 0; i < numCourses; i++)
-            preMap.put(i, new ArrayList<>());
+        // populate adjMap
+        for (int[] pre : prerequisites)
+            adjMap.get(pre[0]).add(pre[1]);
 
-        for (int[] p : prerequisites)
-            preMap.get(p[0]).add(p[1]);
+        boolean visiting[] = new boolean[n];
+        boolean visited[] = new boolean[n];
+        List<Integer> rightOrder = new ArrayList<>();
 
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (int i = 0; i < numCourses; i++) {
-            if (visited[i])
-                continue;
-            if (isCyclic(i, visited, visiting, preMap, stack))
-                return new int[0];
-        }
+        for (int v = 0; v < n; v++)
+            if (!visited[v] && isCycle(v, adjMap, visiting, visited, rightOrder))
+                return new int[]{};
 
-        int[] res = new int[numCourses];
-        int i = 0;
-        while (!stack.isEmpty())
-            res[i++] = stack.removeLast();
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++)
+            res[i] = rightOrder.get(i);
 
         return res;
     }
 
-    private boolean isCyclic(int v, boolean[] visited, boolean[] visiting, Map<Integer, List<Integer>> preMap, Deque<Integer> stack) {
+    private boolean isCycle(int v, Map<Integer, List<Integer>> adjMap,
+                            boolean[] visiting, boolean[] visited, List<Integer> rightOrder) {
         if (visiting[v])
             return true;
         if (visited[v])
             return false;
 
         visiting[v] = true;
-        for (int child : preMap.get(v)) {
-            if (isCyclic(child, visited, visiting, preMap, stack))
+        for (int child : adjMap.getOrDefault(v, new ArrayList<>()))
+            if (isCycle(child, adjMap, visiting, visited, rightOrder))
                 return true;
-        }
         visiting[v] = false;
         visited[v] = true;
-        stack.addFirst(v);
+        rightOrder.add(v);
 
         return false;
     }
 
     // solution2
     public int[] findOrder2(int n, int[][] prerequisites) {
-        // Kahn's BFS Based, topological sort
+        // dfs + color array, topological sort
         // time O(V + E)
         // space O(V + E)
 
-        Map<Integer, List<Integer>> graph = new HashMap<>(); // {parent, [children]}
-        Map<Integer, Integer> indegree = new HashMap<>(); // {node, degree}
-
-        // init graph
+        Map<Integer, List<Integer>> adjMap = new HashMap<>();
         for(int i = 0; i < n; i++)
-            indegree.put(i, 0);
+            adjMap.put(i, new ArrayList<>());
 
-        // build graph
+        // populate adjMap
+        for(int[] pre : prerequisites)
+            adjMap.get(pre[0]).add(pre[1]);
+
+        /* 0 - not visited WHITE
+           1 - processing GREY
+           2 - processed BLACK */
+        int[] color = new int[n];
+        List<Integer> rightOrder = new ArrayList<>();
+
+        for(int v = 0; v < n; v++)
+            if(color[v] == 0 && isCycle(v, adjMap, color, rightOrder))
+                return new int[]{};
+
+        int[] res = new int[n];
+        for(int i = 0; i < n; i++)
+            res[i] = rightOrder.get(i);
+
+        return res;
+    }
+
+    private boolean isCycle(int v, Map<Integer, List<Integer>> adjMap, int[] color, List<Integer> rightOrder) {
+        if(color[v] == 1)
+            return true;
+        if(color[v] == 2)
+            return false;
+
+        color[v] = 1;
+        for(int child : adjMap.getOrDefault(v, new ArrayList<>()))
+            if(isCycle(child, adjMap, color, rightOrder))
+                return true;
+        color[v] = 2;
+        rightOrder.add(v);
+
+        return false;
+    }
+
+    // solution3
+    public int[] findOrder3(int n, int[][] prerequisites) {
+        // bfs, topological sort
+        // time O(V + E)
+        // space O(V + E)
+
+        Map<Integer, List<Integer>> adjMap = new HashMap<>();
+        Map<Integer, Integer> inDegree = new HashMap<>();
+        for(int i = 0; i < n; i++) {
+            adjMap.put(i, new ArrayList<>());
+            inDegree.put(i, 0);
+        }
+
+        // populate adjMap
         for(int[] pre : prerequisites) {
-            int parent = pre[1];
-            int child = pre[0];
-            graph.computeIfAbsent(parent, v -> new ArrayList<>()).add(child);
-            indegree.put(child, indegree.get(child) + 1);
+            adjMap.get(pre[0]).add(pre[1]);
+            inDegree.put(pre[1], inDegree.get(pre[1]) + 1);
         }
 
-        Queue<Integer> sources = new LinkedList<>();
-        // put to queue all sources with degree 0
-        for(Map.Entry<Integer, Integer> entry : indegree.entrySet()) {
+        Queue<Integer> q = new LinkedList<>();
+        for(Map.Entry<Integer, Integer> entry : inDegree.entrySet())
             if(entry.getValue() == 0)
-                sources.add(entry.getKey());
-        }
+                q.add(entry.getKey());
 
         List<Integer> resList = new ArrayList<>();
-        while(!sources.isEmpty()) {
-            int vertex = sources.poll();
+
+        while(!q.isEmpty()) {
+            int vertex = q.poll();
             resList.add(vertex);
-            for(int child : graph.getOrDefault(vertex, new ArrayList<>())) {
-                indegree.put(child, indegree.get(child) - 1);
-                if(indegree.get(child) == 0)
-                    sources.add(child);
+
+            for(int child : adjMap.getOrDefault(vertex, new ArrayList<>())) {
+                inDegree.put(child, inDegree.get(child) - 1);
+
+                if(inDegree.get(child) == 0)
+                    q.add(child);
             }
         }
 
-        if(resList.size() != n)
+        if (resList.size() != n)
             return new int[0];
 
-        int[] resArr = new int[resList.size()];
-        for(int i = 0; i < resList.size(); i++)
-            resArr[i] = resList.get(i);
+        int[] resArr = new int[n];
+        int j = 0;
+        for (int i = n - 1; i >= 0; i--)
+            resArr[j++] = resList.get(i);
 
         return resArr;
     }
@@ -116,10 +160,10 @@ public class CourseScheduleII_210 {
 //        });
 
         course.findOrder2(4, new int[][]{
-                {1,0},
-                {2,0},
-                {3,1},
-                {3,2}
+                {1, 0},
+                {2, 0},
+                {3, 1},
+                {3, 2}
         });
     }
 }

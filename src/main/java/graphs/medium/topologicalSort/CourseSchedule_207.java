@@ -6,44 +6,83 @@ import java.util.*;
 public class CourseSchedule_207 {
     // solution1
     public boolean canFinish1(int numCourses, int[][] prerequisites) {
-        // time O(n + m)
-        // space O(n + m)
+        // dfs + visiting + visited arrays
+        // time O(V + E)
+        // space O(V + E)
 
-        if (prerequisites.length == 0)
-            return true;
+        Map<Integer, List<Integer>> adjMap = new HashMap<>();
 
-        Map<Integer, List<Integer>> preMap = new HashMap<>();
-        for (int[] req : prerequisites)
-            preMap.computeIfAbsent(req[0], k -> new ArrayList<>()).add(req[1]);
+        for(int[] pre : prerequisites)
+            adjMap.computeIfAbsent(pre[0], v -> new ArrayList<>()).add(pre[1]);
 
-        Set<Integer> visited = new HashSet<>();
+        boolean[] visited = new boolean[numCourses];
+        boolean[] visiting = new boolean[numCourses];
 
-        for (int[] req : prerequisites)
-            if (!couldCourseBeFinished(req[0], preMap, visited)) // if some course can't be finished
+        for(int i = 0; i < numCourses; i++)
+            if(!visited[i] && isCycle(i, adjMap, visited, visiting))
                 return false;
 
         return true;
     }
 
-    // detect cycles, if found cycle return false, else return true
-    private boolean couldCourseBeFinished(int crs, Map<Integer, List<Integer>> preMap, Set<Integer> visited) {
-        if (visited.contains(crs))
-            return false;
-        if (!preMap.containsKey(crs) || preMap.get(crs).isEmpty())
+    private boolean isCycle(int v, Map<Integer, List<Integer>> adjMap, boolean[] visited, boolean[] visiting) {
+        if(visiting[v])
             return true;
 
-        visited.add(crs);
-        for (int req : preMap.get(crs))
-            if (!couldCourseBeFinished(req, preMap, visited))
-                return false;
-        visited.remove(crs);
-        preMap.get(crs).clear();
+        if(visited[v])
+            return false;
 
-        return true;
+        visiting[v] = true;
+        for(Integer neighbour : adjMap.getOrDefault(v, new ArrayList<>()))
+            if(isCycle(neighbour, adjMap, visited, visiting))
+                return true;
+
+        visiting[v] = false;
+        visited[v] = true;
+        return false;
     }
 
     // solution2
-    public boolean canFinish2(int n, int[][] prerequisites) {
+    public boolean canFinish2(int numCourses, int[][] prerequisites) {
+        // dfs + color array
+        // time O(V + E)
+        // space O(V + E)
+
+        Map<Integer, List<Integer>> adjMap = new HashMap<>();
+
+        for(int[] pre : prerequisites)
+            adjMap.computeIfAbsent(pre[0], v -> new ArrayList<>()).add(pre[1]);
+
+        /* 0 - not visited WHITE
+           1 - processing GREY
+           2 - processed BLACK */
+        int[] color = new int[numCourses];
+
+        for(int i = 0; i < numCourses; i++)
+            if(color[i] == 0 && isCycle(i, adjMap, color))
+                return false;
+
+        return true;
+    }
+
+    private boolean isCycle(int v, Map<Integer, List<Integer>> adjMap, int[] color) {
+        if(color[v] == 1)
+            return true;
+        if(color[v] == 2)
+            return false;
+
+        color[v] = 1;
+        for(Integer neighbour : adjMap.getOrDefault(v, new ArrayList<>()))
+            if(isCycle(neighbour, adjMap, color))
+                return true;
+
+        color[v] = 2;
+
+        return false;
+    }
+
+    // solution3
+    public boolean canFinish3(int n, int[][] prerequisites) {
         // Kahn's BFS Based, topological sort
         // time O(V + E)
         // space O(V + E)

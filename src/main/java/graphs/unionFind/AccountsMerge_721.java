@@ -33,7 +33,7 @@ public class AccountsMerge_721 {
             String email = entry.getKey();
             Integer accountNum = entry.getValue();
 
-            Integer rootOfComponent = uf.find(accountNum);
+            Integer rootOfComponent = uf.find(accountNum); // !!!!
             emailGroup.computeIfAbsent(rootOfComponent, v -> new ArrayList<>()).add(email);
         }
 
